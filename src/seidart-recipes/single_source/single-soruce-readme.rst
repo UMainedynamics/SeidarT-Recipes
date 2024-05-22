@@ -42,6 +42,7 @@ Before running the model, the necessary .dat files need to be created for the ti
     timevec, fx, fy, fz, srcfn = sourcefunction(em, 10, 'gaus1', 'e')
 
 We are ready to run the model. We have the option to compute the complex valued model for the electric field. 
+
 .. code-block:: python
     
     # The non-complex equations aren't necessary but are also a solution to the PDE
@@ -63,6 +64,7 @@ We are ready to run the model. We have the option to compute the complex valued 
     
 
 .. code-block:: python  
+    
     # Create the GIF so that we can view the wavefield
     build_animation(
             prjfile, 
