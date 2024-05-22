@@ -6,6 +6,7 @@ The Python script, *single_source.py*, is designed to perform electromagnetic si
 Here is a breakdown of the program. The project file needs to be built and required values filled in. 
 
 We need to import the necessary modules to create the source function, run the model, create a receiver array from the model outputs, and build a GIF animation.
+
 .. code-block:: python
     
     from seidart.routines import prjrun, sourcefunction
@@ -13,6 +14,7 @@ We need to import the necessary modules to create the source function, run the m
     from seidart.visualization.im2anim import build_animation
 
 Define files and load the values of the project file into their respective class variables. 
+
 .. code-block:: python
 
     # Define the necessary files. Adjust the relative paths if necessary. 
@@ -39,6 +41,7 @@ Before running the model, the necessary .dat files need to be created for the ti
     # Create the source function
     timevec, fx, fy, fz, srcfn = sourcefunction(em, 10, 'gaus1', 'e')
 
+We are ready to run the model. We have the option to compute the complex valued model for the electric field. 
 .. code-block:: python
     
     # The non-complex equations aren't necessary but are also a solution to the PDE
