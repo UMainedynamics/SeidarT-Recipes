@@ -2,7 +2,7 @@ SeidarT-Recipes
 ###############
 
 
-This is an extension of the SeidarT package to provide examples to models. When contributing, create a folder/submodule for the recipe which includes a Markdown or ReStructured Text file that summarizes the model, what is required, and directions on how to run the submodule. You will also need to include an *__init__.py* file and a YAML file called *<recipe_name>-requirements.yml* that includes any additional packages needing to be installed into the environment. To install packages use the command (after activating the environment)::
+This is an extension of the SeidarT package to provide examples to models. When contributing, create a folder/submodule for the recipe which includes a Markdown or ReStructured Text file that summarizes the model, what is required, and directions on how to run the submodule. You will also need to include an *__init__.py* file and, if applicable, a YAML file called *<recipe_name>-requirements.yml* that includes any additional packages needing to be installed into the environment. To install packages use the command (after activating the environment)::
     
     conda env update --file requirements.yml
     

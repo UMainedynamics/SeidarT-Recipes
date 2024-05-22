@@ -24,6 +24,7 @@ Define files and load the values of the project file into their respective class
 
 
 The *status_check* function will check to make sure that all fields have been completed for the model parameters. If not, it will return a message for which group of parameters are incomplete. If all parameters have been provided, then the tensor coefficients to the model object (seismic or electromagnetic use the same Model object class) will be computed. These will then overwrite the values in the single_source.prj file. In order to suppress overwriting then you will need to flag the *append_to_prjfile* to False. 
+
 .. code-block:: python
     
     # Compute the permittivity coefficients and check to make sure the project file has all required values
@@ -32,14 +33,20 @@ The *status_check* function will check to make sure that all fields have been co
     )
 
 Before running the model, the necessary .dat files need to be created for the time series of the source function in each direction, x,y, and z. This needs to be built 
+
 .. code-block:: python
+ 
     # Create the source function
     timevec, fx, fy, fz, srcfn = sourcefunction(em, 10, 'gaus1', 'e')
+
+.. code-block:: python
     
     # The non-complex equations aren't necessary but are also a solution to the PDE
     complex_values = False
     prjrun.runelectromag(em, mat, dom, use_complex_equations = complex_values)
-    
+
+.. code-block:: python
+ 
     # Create the array object
     array_ex = Array('Ex', prjfile, rcxfile, is_complex = complex_values)
     # Add an AGC function for visualization
@@ -51,6 +58,8 @@ Before running the model, the necessary .dat files need to be created for the ti
         plot_complex = False
     )
     
+
+.. code-block:: python  
     # Create the GIF so that we can view the wavefield
     build_animation(
             prjfile, 
@@ -59,6 +68,8 @@ Before running the model, the necessary .dat files need to be created for the ti
             is_single_precision = True
     )
 
+.. code-block:: python
+ 
     # --------------------------------------------------------------------------
     # We can do the same for the vertical electric field as above
     array_ez = Array('Ez', prjfile, rcxfile, is_complex = complex_values)
