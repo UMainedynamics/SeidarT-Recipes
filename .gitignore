@@ -1,7 +1,5 @@
-./in_progress
 src/seidart-recipes/common_offset/*.dat 
 src/seidart-recipes/single_source/*.dat 
-./recipes/masw/*
 recipes/dipping_bed
 recipes/__init__.py
 recipes/masw
