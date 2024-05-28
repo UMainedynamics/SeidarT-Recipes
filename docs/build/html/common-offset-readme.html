@@ -200,6 +200,40 @@
           <section id="common-offset">
 <h1>Common Offset<a class="headerlink" href="#common-offset" title="Link to this heading">#</a></h1>
 <p>This script simulates a typical GPR survey that uses a common offset between the source and single receiver. SeidarT computes a model for each source-receiver pair and extracts the time series prior to deleting all of the model outputs. The source-receiver pairs are in the order that they are given in the CSV files containing their coordinates. There are 3 files that need to be declared. These are the project file, receiver coordinate file, and source coordinate file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">seidart.simulations.common_offset</span> <span class="kn">import</span> <span class="n">CommonOffset</span>
+<span class="kn">from</span> <span class="nn">seidart.visualization.im2anim</span> <span class="kn">import</span> <span class="n">build_animation</span>
+
+<span class="n">prjfile</span> <span class="o">=</span> <span class="s1">&#39;common_offset.prj&#39;</span>
+<span class="n">rcxfile</span> <span class="o">=</span> <span class="s1">&#39;common_offset_receivers.xyz&#39;</span>
+<span class="n">srcfile</span> <span class="o">=</span> <span class="s1">&#39;common_offset_sources.xyz&#39;</span>
+
+<span class="n">channel</span> <span class="o">=</span> <span class="s1">&#39;Ex&#39;</span>
+<span class="nb">complex</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co</span> <span class="o">=</span> <span class="n">CommonOffset</span><span class="p">(</span>
+    <span class="n">srcfile</span><span class="p">,</span>
+    <span class="n">channel</span><span class="p">,</span>
+    <span class="n">prjfile</span><span class="p">,</span>
+    <span class="n">rcxfile</span><span class="p">,</span>
+    <span class="n">receiver_indices</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">is_complex</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">,</span>
+    <span class="n">single_precision</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">co</span><span class="o">.</span><span class="n">co_run</span><span class="p">(</span><span class="n">seismic</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>co.gain = 800
+co.exaggeration = 0.05
+co.sectionplot(plot_complex = complex)
+co.save()</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co</span><span class="o">.</span><span class="n">gain</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">co</span><span class="o">.</span><span class="n">exaggeration</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">co</span><span class="o">.</span><span class="n">sectionplot</span><span class="p">(</span><span class="n">plot_complex</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">)</span>
+<span class="n">co</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 
         </article>
