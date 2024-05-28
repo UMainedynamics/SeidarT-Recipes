@@ -15,6 +15,6 @@ Welcome to SeidarT-Recipes
     :maxdepth: 2 
     :caption: Recipes 
     
-    single_source
+    single_source-readme
     common-offset-readme 
     
