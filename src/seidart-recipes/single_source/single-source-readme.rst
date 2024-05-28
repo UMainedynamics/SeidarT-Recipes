@@ -41,7 +41,7 @@ Before running the model, the necessary .dat files need to be created for the ti
     # Create the source function
     timevec, fx, fy, fz, srcfn = sourcefunction(em, 10, 'gaus1', 'e')
 
-We are ready to run the model. We have the option to compute the complex valued model for the electric field. 
+We are ready to run the model. We have the option to compute the complex valued model for the electric field. For ice and snow, the complex permittivity is already calculated and used to compute the conductivity. No other materials have a complex representation so we will not use the complex solver. 
 
 .. code-block:: python
     
@@ -49,10 +49,13 @@ We are ready to run the model. We have the option to compute the complex valued 
     complex_values = False
     prjrun.runelectromag(em, mat, dom, use_complex_equations = complex_values)
 
+Next we want to initiate the Array object and load the time series for each receiver in the receiver file. We need to specify the channel. For the section plot, we will apply an auto-gain control to each time series to accomodate geometric spreading and attenuation. For this example, we will use a window of 1/3 the time series. The section plot will likely have quite a few more time steps than receivers so we want to apply an exaggeration to make the plot 
+
 .. code-block:: python
- 
+    
+    channel = 'Ex'
     # Create the array object
-    array_ex = Array('Ex', prjfile, rcxfile, is_complex = complex_values)
+    array_ex = Array(channel, prjfile, rcxfile, is_complex = complex_values)
     # Add an AGC function for visualization
     array_ex.gain = int(em.time_steps/3)
     # We need to scale the axes
@@ -61,32 +64,58 @@ We are ready to run the model. We have the option to compute the complex valued 
     array_ex.sectionplot(
         plot_complex = False
     )
-    
 
+.. note:: 
+    If the .dat files already exist, you can skip the status check, creating the source function, and running the model unless you have edited the project file. 
+
+A single trace can be plotted from the list of receivers by specifying the integer value/index of the receiver. Additional *matplotlib* arguments for Axes.plot can be passed. You can refer to the `*matplotlib.pyplot.plot <https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot>`_ documentation for more details.  
+.. code-block:: python
+    
+    # Let's plot a trace for the 10th receiver in the list of receivers. 
+    receiver_number = 10
+    array_ex.wiggleplot(receiver_number, figure_size = (5,8))
+
+Save the array object as a pickle (.pkl) file. This will store all of the information from the object, as well as, create a .csv file of the array time series. The .csv file will contain each time series per column and each row is a time step. 
+.. code-block:: python
+    # Pickle the object
+    array_ex.save()
+
+We can create a GIF animation to visualize the wavefield. We need to specify the delay between frames and the frame interval. The frame interval is the number of time steps between each frame. A smaller number will create a larger GIF file, and appear to be slower unless the frame delay is lowered. A larger frame interval will appear to jump between time steps. The alpha value is the transparency in the background image of model on which the electric field amplitude is overlayn. 
 .. code-block:: python  
+    
+    # Create the GIF animation so we can 
+    frame_delay = 10
+    frame_interval = 10 
+    alpha_value = 0.3
     
     # Create the GIF so that we can view the wavefield
     build_animation(
             prjfile, 
-            'Ex', 10, 10, 0.3, 
+            channel, frame_delay, frame_interval, alpha, 
             is_complex = complex_values, 
             is_single_precision = True
     )
 
+
+Finally, we can do the same plotting and create the animation for the vertical electric field. The only thing we need to change is the channel. 
 .. code-block:: python
  
     # --------------------------------------------------------------------------
     # We can do the same for the vertical electric field as above
-    array_ez = Array('Ez', prjfile, rcxfile, is_complex = complex_values)
+    channel = 'Ez'
+    array_ez = Array(channel, prjfile, rcxfile, is_complex = complex_values)
     array_ez.gain = int(em.time_steps/3)
     array_ez.exaggeration = 0.1
     array_ez.sectionplot(
         plot_complex = False
     )
+    
+    array_ez.wiggleplot(receiver_number, figure_size = (5,8))
+    array_ex.save()
+    
     build_animation(
             prjfile, 
-            'Ex', 10, 10, 0.3, 
+            channel, frame_delay, frame_interval, alpha, 
             is_complex = complex_values, 
             is_single_precision = True,
-            plottype = 'energy_density'
     )
