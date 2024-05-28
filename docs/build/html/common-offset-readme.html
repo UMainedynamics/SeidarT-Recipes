@@ -201,6 +201,7 @@
           <section id="common-offset">
 <h1>Common Offset<a class="headerlink" href="#common-offset" title="Link to this heading">#</a></h1>
 <p>This script simulates a typical GPR survey that uses a common offset between the source and single receiver. SeidarT computes a model for each source-receiver pair and extracts the time series prior to deleting all of the model outputs. The source-receiver pairs are in the order that they are given in the CSV files containing their coordinates. There are 3 files that need to be declared. These are the project file, receiver coordinate file, and source coordinate file.</p>
+<p>First, we need to import necessary modules and define common variables. We will be simulating a common offset survey of a radial source and receiver orientation. We are interested in the electric field in the x-direction.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">seidart.simulations.common_offset</span> <span class="kn">import</span> <span class="n">CommonOffset</span>
 <span class="kn">from</span> <span class="nn">seidart.visualization.im2anim</span> <span class="kn">import</span> <span class="n">build_animation</span>
 
@@ -212,6 +213,7 @@
 <span class="nb">complex</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
+<p>We can initialize the object from the <em>CommonOffset</em> class which inherits much of its functionality from the <em>Array</em> class in <em>arraybuild</em>. We will use the receiver and source locations given in meters and not indices. We will not use the complex solver, and we want single precision outputs to limit hard drive requirements. After we have intialized the object, we can simply run it with the <em>co_run</em> function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co</span> <span class="o">=</span> <span class="n">CommonOffset</span><span class="p">(</span>
     <span class="n">srcfile</span><span class="p">,</span>
     <span class="n">channel</span><span class="p">,</span>
@@ -225,10 +227,7 @@
 <span class="n">co</span><span class="o">.</span><span class="n">co_run</span><span class="p">(</span><span class="n">seismic</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>co.gain = 800
-co.exaggeration = 0.05
-co.sectionplot(plot_complex = complex)
-co.save()</p>
+<p>Each source and receiver pair will run the model, pull the receiver locations, then delete all of the .dat files associated with the model. Following the termination of <em>co_run</em>, we will have an array built for each receiver-source pair which we can plot. Similarly to the common midpoint survey in <a class="reference external" href="https://github.com/UMainedynamics/SeidarT-Recipes/blob/main/src/seidart-recipes/single_source/single-source-readme.rst">single_source.py</a>. The save function is inherited from the <em>Array</em> class and produces a CSV and pickle file for each receiver pair and the CommonOffset object, respectively.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co</span><span class="o">.</span><span class="n">gain</span> <span class="o">=</span> <span class="mi">800</span>
 <span class="n">co</span><span class="o">.</span><span class="n">exaggeration</span> <span class="o">=</span> <span class="mf">0.05</span>
 <span class="n">co</span><span class="o">.</span><span class="n">sectionplot</span><span class="p">(</span><span class="n">plot_complex</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">)</span>
