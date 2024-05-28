@@ -23,5 +23,5 @@ co.co_run(seismic = False)
 co.gain = 800
 co.exaggeration = 0.05
 co.sectionplot(plot_complex = complex)
-co.save(as_csv = True)
+co.save()
 

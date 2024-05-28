@@ -1,0 +1,5 @@
+Recipes 
+=======
+
+.. include:: ../../src/seidart-recipes/simple_model/simple-model-readme
+.. include:: ../../src/seidart-recipes/common_offset/common-offset-readme
