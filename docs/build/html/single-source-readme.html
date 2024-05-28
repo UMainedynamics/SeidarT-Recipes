@@ -253,61 +253,54 @@
 <p class="admonition-title">Note</p>
 <p>If the .dat files already exist, you can skip the status check, creating the source function, and running the model unless you have edited the project file.</p>
 </div>
-<p>A single trace can be plotted from the list of receivers by specifying the integer value/index of the receiver. Additional <em>matplotlib</em> arguments for Axes.plot can be passed. You can refer to the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot">*matplotlib.pyplot.plot</a> documentation for more details.
-.. code-block:: python</p>
-<blockquote>
-<div><p># Let’s plot a trace for the 10th receiver in the list of receivers.
-receiver_number = 10
-array_ex.wiggleplot(receiver_number, figure_size = (5,8))</p>
-</div></blockquote>
-<p>Save the array object as a pickle (.pkl) file. This will store all of the information from the object, as well as, create a .csv file of the array time series. The .csv file will contain each time series per column and each row is a time step.
-.. code-block:: python</p>
-<blockquote>
-<div><p># Pickle the object
-array_ex.save()</p>
-</div></blockquote>
-<p>We can create a GIF animation to visualize the wavefield. We need to specify the delay between frames and the frame interval. The frame interval is the number of time steps between each frame. A smaller number will create a larger GIF file, and appear to be slower unless the frame delay is lowered. A larger frame interval will appear to jump between time steps. The alpha value is the transparency in the background image of model on which the electric field amplitude is overlayn.
-.. code-block:: python</p>
-<blockquote>
-<div><p># Create the GIF animation so we can
-frame_delay = 10
-frame_interval = 10
-alpha_value = 0.3</p>
-<p># Create the GIF so that we can view the wavefield
-build_animation(</p>
-<blockquote>
-<div><p>prjfile,
-channel, frame_delay, frame_interval, alpha,
-is_complex = complex_values,
-is_single_precision = True</p>
-</div></blockquote>
-<p>)</p>
-</div></blockquote>
-<p>Finally, we can do the same plotting and create the animation for the vertical electric field. The only thing we need to change is the channel.
-.. code-block:: python</p>
-<blockquote>
-<div><p># ————————————————————————–
-# We can do the same for the vertical electric field as above
-channel = ‘Ez’
-array_ez = Array(channel, prjfile, rcxfile, is_complex = complex_values)
-array_ez.gain = int(em.time_steps/3)
-array_ez.exaggeration = 0.1
-array_ez.sectionplot(</p>
-<blockquote>
-<div><p>plot_complex = False</p>
-</div></blockquote>
-<p>)</p>
-<p>array_ez.wiggleplot(receiver_number, figure_size = (5,8))
-array_ex.save()</p>
-<dl class="simple">
-<dt>build_animation(</dt><dd><p>prjfile,
-channel, frame_delay, frame_interval, alpha,
-is_complex = complex_values,
-is_single_precision = True,</p>
-</dd>
-</dl>
-<p>)</p>
-</div></blockquote>
+<p>A single trace can be plotted from the list of receivers by specifying the integer value/index of the receiver. Additional <em>matplotlib</em> arguments for Axes.plot can be passed. You can refer to the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot">*matplotlib.pyplot.plot</a> documentation for more details.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s plot a trace for the 10th receiver in the list of receivers.</span>
+<span class="n">receiver_number</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">array_ex</span><span class="o">.</span><span class="n">wiggleplot</span><span class="p">(</span><span class="n">receiver_number</span><span class="p">,</span> <span class="n">figure_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Save the array object as a pickle (.pkl) file. This will store all of the information from the object, as well as, create a .csv file of the array time series. The .csv file will contain each time series per column and each row is a time step.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pickle the object</span>
+<span class="n">array_ex</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can create a GIF animation to visualize the wavefield. We need to specify the delay between frames and the frame interval. The frame interval is the number of time steps between each frame. A smaller number will create a larger GIF file, and appear to be slower unless the frame delay is lowered. A larger frame interval will appear to jump between time steps. The alpha value is the transparency in the background image of model on which the electric field amplitude is overlayn.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the GIF animation so we can</span>
+<span class="n">frame_delay</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">frame_interval</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">alpha_value</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="c1"># Create the GIF so that we can view the wavefield</span>
+<span class="n">build_animation</span><span class="p">(</span>
+        <span class="n">prjfile</span><span class="p">,</span>
+        <span class="n">channel</span><span class="p">,</span> <span class="n">frame_delay</span><span class="p">,</span> <span class="n">frame_interval</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span>
+        <span class="n">is_complex</span> <span class="o">=</span> <span class="n">complex_values</span><span class="p">,</span>
+        <span class="n">is_single_precision</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we can do the same plotting and create the animation for the vertical electric field. The only thing we need to change is the channel.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------------------------</span>
+<span class="c1"># We can do the same for the vertical electric field as above</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="s1">&#39;Ez&#39;</span>
+<span class="n">array_ez</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">prjfile</span><span class="p">,</span> <span class="n">rcxfile</span><span class="p">,</span> <span class="n">is_complex</span> <span class="o">=</span> <span class="n">complex_values</span><span class="p">)</span>
+<span class="n">array_ez</span><span class="o">.</span><span class="n">gain</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">em</span><span class="o">.</span><span class="n">time_steps</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">array_ez</span><span class="o">.</span><span class="n">exaggeration</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">array_ez</span><span class="o">.</span><span class="n">sectionplot</span><span class="p">(</span>
+    <span class="n">plot_complex</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">array_ez</span><span class="o">.</span><span class="n">wiggleplot</span><span class="p">(</span><span class="n">receiver_number</span><span class="p">,</span> <span class="n">figure_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">array_ex</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="n">build_animation</span><span class="p">(</span>
+        <span class="n">prjfile</span><span class="p">,</span>
+        <span class="n">channel</span><span class="p">,</span> <span class="n">frame_delay</span><span class="p">,</span> <span class="n">frame_interval</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span>
+        <span class="n">is_complex</span> <span class="o">=</span> <span class="n">complex_values</span><span class="p">,</span>
+        <span class="n">is_single_precision</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 </section>
 
         </article>

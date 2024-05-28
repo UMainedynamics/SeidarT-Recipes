@@ -66,9 +66,11 @@ Next we want to initiate the Array object and load the time series for each rece
     )
 
 .. note:: 
+    
     If the .dat files already exist, you can skip the status check, creating the source function, and running the model unless you have edited the project file. 
 
 A single trace can be plotted from the list of receivers by specifying the integer value/index of the receiver. Additional *matplotlib* arguments for Axes.plot can be passed. You can refer to the `*matplotlib.pyplot.plot <https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot>`_ documentation for more details.  
+
 .. code-block:: python
     
     # Let's plot a trace for the 10th receiver in the list of receivers. 
@@ -76,11 +78,14 @@ A single trace can be plotted from the list of receivers by specifying the integ
     array_ex.wiggleplot(receiver_number, figure_size = (5,8))
 
 Save the array object as a pickle (.pkl) file. This will store all of the information from the object, as well as, create a .csv file of the array time series. The .csv file will contain each time series per column and each row is a time step. 
+
 .. code-block:: python
+    
     # Pickle the object
     array_ex.save()
 
 We can create a GIF animation to visualize the wavefield. We need to specify the delay between frames and the frame interval. The frame interval is the number of time steps between each frame. A smaller number will create a larger GIF file, and appear to be slower unless the frame delay is lowered. A larger frame interval will appear to jump between time steps. The alpha value is the transparency in the background image of model on which the electric field amplitude is overlayn. 
+
 .. code-block:: python  
     
     # Create the GIF animation so we can 
@@ -98,6 +103,7 @@ We can create a GIF animation to visualize the wavefield. We need to specify the
 
 
 Finally, we can do the same plotting and create the animation for the vertical electric field. The only thing we need to change is the channel. 
+
 .. code-block:: python
  
     # --------------------------------------------------------------------------
