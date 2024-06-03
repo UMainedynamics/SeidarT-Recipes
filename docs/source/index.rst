@@ -17,4 +17,4 @@ Welcome to SeidarT-Recipes
     
     single-source-readme
     common-offset-readme 
-    
+    synthetic-fabric-readme

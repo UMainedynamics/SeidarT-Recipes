@@ -1,12 +1,8 @@
 import numpy as np 
 import pandas as pd
-from glob2 import glob  
+import matplotlib.pyplot as plt
+import mplstereonet
 from seidart.routines.fabricsynth import Fabric 
-
-# This recipe replicates a couple fabrics from Figure 7 from the following paper:
-# https://tc.copernicus.org/articles/15/303/2021/
-#
-# The parameters were tuned somewhat heuristically to match the figure
 
 multipole1 = {
     'distribution': 'normal',
@@ -48,21 +44,57 @@ multipole3 = {
 mp1 = Fabric(
     multipole1, output_filename = 'multipole1.csv', plot = False
 )
+mp1.cmap_name = 'nipy_spectral'
+mp1.custom_cmap(n_colors = 20)
+mp1.alpha = 0.3 
+mp1.marker_size = 1 
+mp1.projection_plot()
 
 # Change the name of euler_angles.csv 
 mp2 = Fabric(
     multipole2, output_filename = 'multipole2.csv', plot = False
 )
+mp2.cmap_name = 'nipy_spectral'
+mp2.custom_cmap(n_colors = 6)
+mp2.alpha = 0.3 
+mp2.marker_size = 1 
+mp2.projection_plot()
 
 mp3 = Fabric(
     multipole3, output_filename = 'multipole3.csv', plot = False
 )
+mp3.cmap_name = 'nipy_spectral'
+mp3.custom_cmap(n_colors = 10)
+mp3.alpha = 0.3 
+mp3.marker_size = 1 
+mp3.projection_plot()
 
-# mp1.cmap_name = 'gist_heat_r'
-# mp1.custom_cmap()
-# mp1.alpha = 0.3 
-# mp1.marker_size = 1 
-# mp1.projection_plot()
 
 
+
+# Combine the figure and axes objects into a subplot  
+fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize = (10, 15) ) 
+for original_axis, new_ax in zip([mp1.ax, mp2.ax, mp3.ax], [ax1, ax2, ax3]):
+    for artist in original_axis.get_children():
+        artist.remove() 
+        new_ax.add_artist(artist) 
+    # new_ax.set_xlim(original_axis.get_xlim())
+    # new_ax.set_ylim(original_axis.get_ylim())
+    # new_ax.set_aspect('equal')
+    # new_ax.set_azimuth_ticks(np.arange(0, 360, 10))
+    # new_ax.set_longitude_grid(10)
+    # new_ax.set_rotation(0)
+    # new_ax.grid(True)
+
+
+
+# Suppress tick labels
+for ax in [new_ax1, new_ax2, new_ax3]:
+    ax.set_xticklabels([])
+    ax.set_yticklabels([])
+
+# Show the combined plot
+plt.tight_layout()
+plt.show()
+    
 
