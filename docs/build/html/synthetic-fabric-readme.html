@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="search.html" /><link rel="next" title="Single Source/Common Midpoint" href="single-source-readme.html" /><link rel="prev" title="Welcome to SeidarT-Recipes" href="index.html" />
+<link rel="search" title="Search" href="search.html" /><link rel="prev" title="Common Offset" href="common-offset-readme.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>SeidarT-Recipes - SeidarT-Recipes documentation v1.0</title>
+        <title>Synthetic Fabric - SeidarT-Recipes documentation v1.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -157,14 +157,14 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">SeidarT-Recipes</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">SeidarT-Recipes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recipes</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="single-source-readme.html">Single Source/Common Midpoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="common-offset-readme.html">Common Offset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="synthetic-fabric-readme.html">Synthetic Fabric</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Synthetic Fabric</a></li>
 </ul>
 
 </div>
@@ -199,18 +199,11 @@
           </label>
         </div>
         <article role="main">
-          <section id="seidart-recipes">
-<h1>SeidarT-Recipes<a class="headerlink" href="#seidart-recipes" title="Link to this heading">#</a></h1>
-<p>This is an extension of the <a class="reference external" href="https://github.com/UMainedynamics/SeidarT">SeidarT</a> package to provide examples to models. When contributing, create a folder/submodule for the recipe which includes a Markdown or ReStructured Text file that summarizes the model, what is required, and directions on how to run the submodule. You will also need to include an <em>__init__.py</em> file and, if applicable, a YAML file called <em>&lt;recipe_name&gt;-requirements.yml</em> that includes any additional packages needing to be installed into the environment. To install packages use the command (after activating the environment):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">update</span> <span class="o">--</span><span class="n">file</span> <span class="n">requirements</span><span class="o">.</span><span class="n">yml</span>
-</pre></div>
-</div>
-<p>or (without activating the environment):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">update</span> <span class="o">--</span><span class="n">name</span> <span class="n">seidart</span> <span class="o">--</span><span class="n">file</span> <span class="n">requirements</span><span class="o">.</span><span class="n">yml</span>
-</pre></div>
-</div>
-<p>Please provide robust comments in any scripts.</p>
-<p>The <em>main</em> branch of the repository is the only permanent branch. When creating new recipes that haven’t been finalized, create branch(es) under the name of the recipe and delete it after merging to <em>main</em>. In the <em>docs/source</em> folder is a file called <em>index.rst</em>. Add the path to your .md or .rst file.</p>
+          <section id="synthetic-fabric">
+<h1>Synthetic Fabric<a class="headerlink" href="#synthetic-fabric" title="Link to this heading">#</a></h1>
+<p>This recipe replicates 3 fabrics from Figure 7 in <a class="reference external" href="https://tc.copernicus.org/articles/15/303/2021/">Morgan E. Monz et al.</a>. The parameters were tuned somewhat heuristically to match the figure.</p>
+<p>The <em>orientation_tensor</em> module is deprecated and has been replaced with the <a class="reference external" href="https://github.com/UMainedynamics/SeidarT/blob/main/src/seidart/routines/fabricsynth.py">fabricsynth</a> module. This was done to expand the capability of modeling more complex fabrics. This example computes multipole fabrics, but a single pole fabric can be built in the same manner by changing the inputs.</p>
+<img alt="monz_et_al_replica.png" src="monz_et_al_replica.png" />
 </section>
 
         </article>
@@ -218,23 +211,15 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="single-source-readme.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Single Source/Common Midpoint</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="index.html">
+          
+          <a class="prev-page" href="common-offset-readme.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Home</div>
+                <div class="title">Common Offset</div>
                 
               </div>
             </a>

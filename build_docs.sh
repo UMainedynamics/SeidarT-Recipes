@@ -24,6 +24,9 @@ for dir in "$SRC_DIR"/*/; do
     fi 
 done 
 
+# Copy images from their respective folders into the docs/source/figures folder 
+cp src/seidart-recipes/fabric/monz_et_al_replica.png $DEST_DIR/figures
+
 echo $pwd 
 cd docs
 
