@@ -11,9 +11,9 @@ complex_values = False
 dom, mat, seis, em = prjrun.domain_initialization(prjfile)
 
 ## Compute the permittivity coefficients
-# prjrun.status_check(em, mat, dom, prjfile, seismic = False)
+# prjrun.status_check(em, mat, dom, prjfile)
 prjrun.status_check(
-    em, mat, dom, prjfile, seismic = False, append_to_prjfile = True
+    em, mat, dom, prjfile, append_to_prjfile = True
 )
 
 timevec, fx, fy, fz, srcfn = sourcefunction(em, 10, 'gaus1', 'e')
