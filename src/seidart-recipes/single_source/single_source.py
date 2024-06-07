@@ -16,7 +16,7 @@ prjrun.status_check(
     em, mat, dom, prjfile, append_to_prjfile = True
 )
 
-timevec, fx, fy, fz, srcfn = sourcefunction(em, 10, 'gaus1', 'e')
+timevec, fx, fy, fz, srcfn = sourcefunction(em, 10, 'gaus1')
 
 prjrun.runelectromag(em, mat, dom, use_complex_equations = complex_values)
 

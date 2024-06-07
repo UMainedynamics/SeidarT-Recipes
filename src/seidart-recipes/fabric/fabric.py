@@ -6,7 +6,6 @@ from seidart.routines.fabricsynth import Fabric
 
 multipole1 = {
     'distribution': 'normal',
-    'multimodal': True,
     'npts': [160, 175, 160, 90, 90],
     'strike': [110, 290, 255, 75, 50],
     'strike_std': [10, 10, 8, 5, 6],
@@ -18,7 +17,6 @@ multipole1 = {
 
 multipole2 = {
     'distribution': 'normal',
-    'multimodal': True,
     'npts': [155, 320, 85, 150, 110, 110, 110],
     'strike': [275, 80, 295, 115, 115, 195, 230],
     'strike_std': [5, 7, 10, 5, 35, 10, 10],
@@ -30,7 +28,6 @@ multipole2 = {
 
 multipole3 = {
     'distribution': 'normal',
-    'multimodal': True,
     'npts': [190, 150, 110, 60, 180, 120],
     'strike': [83, 128, 147, 200, 240, 265],
     'strike_std': [8, 10, 10, 7, 13, 5],
