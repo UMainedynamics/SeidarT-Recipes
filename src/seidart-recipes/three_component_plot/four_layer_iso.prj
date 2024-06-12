@@ -61,7 +61,7 @@ I,four_layer_model.png
 
 D,dim,2
 D,nx,600
-D,ny,n/a
+D,ny,10
 D,nz,400
 D,dx,
 D,dy,n/a
