@@ -25,7 +25,7 @@ however theory and practice sometimes diverge given the problem. When this happe
 	
 	\sigma_{i,\text{opt}} = \frac{NP + 1}{\Delta x_i \sqrt{\mu_0/(\varepsilon_i \varepsilon_0)} }
 
-followed by a scaling factor, :math:`\rho`, 
+followed by a scaling factor, :math:`\rho`, to find the maximum value
 
 .. math:: 	
 	
