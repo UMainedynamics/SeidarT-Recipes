@@ -19,3 +19,4 @@ Welcome to SeidarT-Recipes
     load-array-from-file-readme
     common-offset-readme 
     synthetic-fabric-readme
+    boundary-performance-readme
