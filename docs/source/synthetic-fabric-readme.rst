@@ -5,6 +5,4 @@ This recipe replicates 3 fabrics from Figure 7 in `Morgan E. Monz et al. <https:
 
 The *orientation_tensor* module is deprecated and has been replaced with the `fabricsynth <https://github.com/UMainedynamics/SeidarT/blob/main/src/seidart/routines/fabricsynth.py>`_ module. This was done to expand the capability of modeling more complex fabrics. This example computes multipole fabrics, but a single pole fabric can be built in the same manner by changing the inputs. 
 
-.. figure:: ./UMainedynamics/SeidarT-Recipes/blob/main/src/seidart-recipes/fabric/monz_et_al_replica.png
-    :target: https://github.com/
-
+.. image:: figures/monz_et_al_replica.png

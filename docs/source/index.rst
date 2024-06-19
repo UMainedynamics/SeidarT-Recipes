@@ -16,5 +16,6 @@ Welcome to SeidarT-Recipes
     :caption: Recipes 
     
     single-source-readme
+    load-array-from-file-readme
     common-offset-readme 
     synthetic-fabric-readme
