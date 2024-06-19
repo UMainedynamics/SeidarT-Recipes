@@ -1,0 +1,59 @@
+
+# Written by Steven Bernsen
+# University of Maine
+# -----------------------------------------------------------------------------
+
+
+I,single_layer.png
+
+D,dim,2.5
+D,nx,100
+D,ny,50
+D,nz,100
+D,dx,0.1
+D,dy,0.1
+D,dz,0.1
+D,cpml,10
+D,nmats,3
+D,tfile,
+
+# number, id, R/G/B, Temperature, Density, Porosity, Water_Content, Anisotropic, ANG_File
+M,0,snow,0/255/255,-1,900,60,80,False,
+M,1,snow,179/179/179,-10,900,30,10,False,
+M,2,air,242/242/242,-10,1.4,0,0,False,
+
+# number, Alpha1, Alpha2, Alpha3, fref
+A,0,0,0,0,1
+A,1,0,0,0,1
+A,2,0,0,0,1
+
+# The source parameters for the seismic model
+S,dt,
+S,time_steps,1024
+S,x,1
+S,y,2.5
+S,z,6
+S,f0,100
+S,theta,0
+S,phi,0
+
+# id, C11, C12, C13, C22, C23, C33, C44, C55, C66, rho
+C,0,,,,,,,,,,
+C,1,,,,,,,,,,
+C,2,,,,,,,,,,
+
+# The source parameters for the electromagnetic model
+E,dt,
+E,time_steps,
+E,x,1
+E,y,2.5
+E,z,6
+E,f0,2e8
+E,theta,90
+E,phi,0
+
+# id, e11, e22, e33, s11, s22, s33
+P,0,,,,,,,,,,
+P,1,,,,,,,,,,
+P,2,,,,,,,,,,
+

@@ -2,8 +2,7 @@ from seidart.routines import prjbuild, prjrun, sourcefunction
 from seidart.routines.arraybuild import Array
 from seidart.visualization.im2anim import build_animation
 
-
-prjfile = 'single_source.prj' 
+prjfile = 'single_source_test.prj' 
 rcxfile = 'receivers.xyz'
 complex_values = False
 
@@ -21,7 +20,7 @@ timevec, fx, fy, fz, srcfn = sourcefunction(em, 10, 'gaus1')
 prjrun.runelectromag(em, mat, dom, use_complex_equations = complex_values)
 
 array_ex = Array('Ex', prjfile, rcxfile, is_complex = complex_values)
-array_ex.gain = int(em.time_steps/3)
+# array_ex.gain = int(em.time_steps/5)
 array_ex.exaggeration = 0.1 
 array_ex.sectionplot(
     plot_complex = False
