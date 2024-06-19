@@ -7,7 +7,7 @@ Testing the performance of the CPML allows for building optimal models. There ar
 
 .. math:: 
 	
-	\alpha_{\text{max}} = 2 \pi f_{\text{src}} \eps_0
+	\alpha_{\text{max}} = 2 \pi f_{\text{src}} \varepsilon_0
 
 provides a generalized term for numerical stability and optimal performance.  
 
@@ -15,7 +15,7 @@ provides a generalized term for numerical stability and optimal performance.
 
 .. math::
 	
-	 \kappa_{i,\text{max}} = 1 + (\alpha_{\text{max}} / f_{\src}) \sqrt{\mu_0 * \varepsilon_i}
+	 \kappa_{i,\text{max}} = 1 + (\alpha_{\text{max}} / f_{\text{src}}) \sqrt{\mu_0 * \varepsilon_i}
 
 however theory and practice sometimes diverge given the problem. When this happens, tuning the value involves a more heuristic approach.   
 
@@ -23,13 +23,13 @@ however theory and practice sometimes diverge given the problem. When this happe
 
 .. math::
 	
-	\sigma_{i,\text{opt}} = \frac{NP + 1}{\Delta x_i \sqrt{\mu_0/(\varepsilon_i \varepsilon_0)}
+	\sigma_{i,\text{opt}} = \frac{NP + 1}{\Delta x_i \sqrt{\mu_0/(\varepsilon_i \varepsilon_0)} }
 
 followed by a scaling factor, :math:`\rho`, 
 
 .. math:: 	
 	
-	\sigma_{\text{max}} = \rho \sigma_{\text{opt}} 
+	\sigma_{i,\text{max}} = \rho \cdot \sigma_{i,\text{opt}} 
 
 There are different approaches to estimating the reflected power. This script computes the cumulative energy density in the boundary region over the full time interval by using a grid search over varying the proportionality constant, :math:`\rho`, and :math:`\kappa_{\text{max}}` values. Relative to a reference value, we can gauge the performance of the boundary conditions.
 
