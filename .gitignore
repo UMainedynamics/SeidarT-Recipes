@@ -1,5 +1,10 @@
 src/seidart-recipes/common_offset/*.dat 
 src/seidart-recipes/single_source/*.dat 
+src/seidart-recipes/anisotropic_travel_time/*.dat
+src/seidart-recipes/composite_radargrams/*.dat
+src/seidart-recipes/load_array_from_file/*.dat
+src/seidart-recipes/fabric/*.dat
+src/seidart-recipes/three_component_plot/*.dat
 recipes/dipping_bed
 recipes/__init__.py
 recipes/masw
