@@ -3,7 +3,7 @@ Boundary Performance
 
 Testing the performance of the CPML allows for building optimal models. The maximum spatial step and source frequency should be accounted for when setting up the domain to reduce numerical instability. There are 3 primary parameters - :math:`\kappa`, :math:`\sigma`, and :math:`\alpha` - that affect the absorption and attenuation of wave energy as it travels into and out of the boundary. 
 
-**:math:`\kappa`** is the scaling factor that adjust the effective speed of the wave within the CPML. :math:`\kappa` enhances absorption by compressesing the wave field and increasing the path length. A higher :math:`\kappa_{\text{max}}` value leads to better absorption by compressing the fields more, but values that are too high can cause numerical instability. Lower values improve stability but at the cost of less effective boundaries. An optimal value is given by 
+**:math:`\kappa`** is the scaling factor that adjust the effective speed of the wave within the CPML. :math:`\kappa` enhances absorption by compressesing the wave field and increasing the path length. A higher :math:`\kappa_{\text{max}}` value leads to better absorption by compressing the fields more, but values that are too high can cause numerical instability. Lower values improve stability but at the cost of less effective boundaries. In the model domain, :math:`\kappa` is 1 then increases to its maximum value as distance into the CPML increases. An optimal maximum value is given by: 
 
 .. math::
 	
@@ -207,6 +207,7 @@ A breakdown of the code is as follows.
 	with open('perf_data_output.pkl', 'wb') as f:
 		pickle.dump(data, f)
 
-The figure generated can be seen below. A high :math:`\kappa_{\text{max}}` along with a high :math:`\rho` would intuitively be less numerically stable than low values for each. What we see is that in the high value of each, not much energy is penetrating the boundary and instead being reflected back into the domain. However, at the opposite end of the spectrum, we want to make sure that energy isn't passing through the boundary layer. We can conclude that`\kappa_{\text{max}}` and :math:`\rho` values around 1.5 and 0.5-1.0, respectively, would be good choices and consistent with the litterature, but inconsistent with the equations above which estimated a `\kappa_{\text{max}}`.
+
+The figure generated can be seen below. A high :math:`\kappa_{\text{max}}` along with a high :math:`\rho` would intuitively be less numerically stable than low values for each. What we see is that in the high value of each, not much energy is penetrating the boundary and instead being reflected back into the domain. However, at the opposite end of the spectrum, we want to make sure that energy isn't passing through the boundary layer. We can conclude that`\kappa_{\text{max}}` and :math:`\rho` values around 1.0-3.0 and 0.5-1.0, respectively, would be good choices and consistent with the litterature. Our estimate for `\kappa_{\text{max}}` was virtually 1.0 which implies that there is no difference between :math:`\kappa` within and outside of the boundary. 
 
 .. image:: figures/kappa_vs_sigma_perf.png

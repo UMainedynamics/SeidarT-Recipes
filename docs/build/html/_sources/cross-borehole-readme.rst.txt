@@ -39,7 +39,8 @@ The script presents a straightforward workflow. The primary components are broke
     c. Initialize the array and build the set of time series. 
     d. Plot the section plot for each electric field direction. 
 
-.. code-block:: python     
+.. code-block:: python
+	
     plane = 'xz' 
     indslice = 25 + domain.cpml #Inline with the source and corrected for the CPML
 
