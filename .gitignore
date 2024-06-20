@@ -6,6 +6,7 @@ src/seidart-recipes/load_array_from_file/*.dat
 src/seidart-recipes/fabric/*.dat
 src/seidart-recipes/three_component_plot/*.dat
 src/seidart-recipes/boundary_performance/*.dat
+src/seidart-recipes/cross-borehole/*.dat 
 recipes/dipping_bed
 recipes/__init__.py
 recipes/masw

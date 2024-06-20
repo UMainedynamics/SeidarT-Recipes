@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath('..'))
 project = 'SeidarT-Recipes'
 copyright = '2024, Steven Bernsen'
 author = 'Steven Bernsen'
-version = '1.0'
+version = '2.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

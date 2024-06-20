@@ -1,6 +1,6 @@
 import numpy as np 
 
-from seidart.routines import prjbuild, sourcefunction 
+from seidart.routines import prjrun, sourcefunction 
 from seidart.routines.arraybuild import Array 
 from seidart.visualization.slice25d import slice
 
@@ -22,14 +22,31 @@ prjrun.runelectromag(
 # ------------------------------------------------------------------------------
 # Visualize the wavefield
 plane = 'xz' 
-indslice = 25 #Inline with the source
+indslice = 25 + domain.cpml #Inline with the source and corrected for the CPML
 
 # GIF parameters 
 num_steps = 10
 alpha = 0.3 
-delay = 5 
+delay = 10 
 
 slice(prjfile, 'Ex', indslice, num_steps, plane, alpha, delay)
 slice(prjfile, 'Ey', indslice, num_steps, plane, alpha, delay)
 slice(prjfile, 'Ez', indslice, num_steps, plane, alpha, delay)
+
+# ------------------------------------------------------------------------------
+# Visualize the receiver data
+arr_x = Array('Ex', prjfile, rcxfile) 
+arr_y = Array('Ey', prjfile, rcxfile)
+arr_z = Array('Ez', prjfile, rcxfile)
+
+arr_x.gain = 31 
+arr_y.gain = 31
+arr_z.gain = 31
+arr_x.exaggeration = 0.1 
+arr_y.exaggeration = 0.1
+arr_z.exaggeration = 0.1    
+
+arr_x.sectionplot()
+arr_y.sectionplot()
+arr_z.sectionplot()
 
