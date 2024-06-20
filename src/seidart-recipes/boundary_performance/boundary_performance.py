@@ -1,6 +1,7 @@
 import numpy as np
 from glob2 import glob
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 from seidart.routines import prjrun, sourcefunction 
 from seidart.routines.definitions import * 
@@ -86,21 +87,25 @@ cpd_x = cumulative_power_density_x[:,:,0]
 cpd_z = cumulative_power_density_z[:,:,0]
 
 # Create the kde plots 
-kappa_grid, sigma_grid = np.meshgrid(kappa_max, sig_opt_scalar)
+sigma_grid, kappa_grid = np.meshgrid( sig_opt_scalar, kappa_max)
 kappa_flat = kappa_grid.ravel() 
 sigma_flat = sigma_grid.ravel() 
 cpd_x_flat = cpd_x.ravel()
 cpd_z_flat = cpd_z.ravel()
 
 fig, axs = plt.subplots(1,2, figsize = (12,6), sharey = True)
-sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_x_flat, fill = True, ax = axs[0], cmap = "Blues")
-sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_z_flat, fill = True, ax = axs[1], cmap = "Blues")
+sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_x_flat/cpd_x_flat.max(), fill = True, ax = axs[0], cmap = "YlGr", bw_adjust = 0.25)
+sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_z_flat/cpd_x_flat.max(), fill = True, ax = axs[1], cmap = "mako_r", bw_adjust = 0.25)
 
-axs[0].set_xlabel(r'$\kappa_{\text{max}}$', fontsize = 16)
-axs[0].set_ylabel(r'$\sigma_{\text{max}}/\sigma_{\text{opt}}$', fontsize = 16)
+axs[0].set_ylabel(r'$\kappa_{\text{max}}$', fontsize = 16)
+axs[0].set_xlabel(r'$\sigma_{\text{max}}/\sigma_{\text{opt}}$', fontsize = 16)
 axs[0].set_title('Ex Cumulative Power Density')
-axs[1].set_xlabel(r'$\kappa_{\text{max}}$', fontsize = 16)
-axs[1].set_ylabel(r'$\sigma_{\text{max}}/\sigma_{opt}$', fontsize = 16)
+axs[0].set_xlim( sig_opt_scalar.min(), sig_opt_scalar.max() )
+axs[0].set_ylim( kappa_max.min(), kappa_max.max() )
+axs[1].set_ylabel(r'$\kappa_{\text{max}}$', fontsize = 16)
+axs[1].set_xlabel(r'$\sigma_{\text{max}}/\sigma_{opt}$', fontsize = 16)
 axs[1].set_title('Ez Cumulative Power Density')
+axs[1].set_xlim( sig_opt_scalar.min(), sig_opt_scalar.max())
+axs[1].set_ylim( kappa_max.min(), kappa_max.max() )
 plt.show()
 

@@ -1,15 +1,7 @@
 Boundary Performance 
 --------------------
 
-Testing the performance of the CPML allows for building optimal models. There are 3 primary parameters - :math:`\kappa`, :math:`\sigma`, and :math:`\alpha` - for the absorbing boundary. 
-
-:math:`\alpha` is an artificial loss parameter that add an additional loss term to stabilize the CPML. This is primarily effective in eliminating evancescent and grazing waves with higher max values enhancing the dampening effect. Typically, a small non-zero value is used, and while there are a few equations for computing an optimum :math:`\alpha_{\text{max}}`, it was found that
-
-.. math:: 
-	
-	\alpha_{\text{max}} = 2 \pi f_{\text{src}} \varepsilon_0
-
-provides a generalized term for numerical stability and optimal performance.  
+Testing the performance of the CPML allows for building optimal models. The maximum spatial step and source frequency should be accounted for when setting up the domain to reduce numerical instability. There are 3 primary parameters - :math:`\kappa`, :math:`\sigma`, and :math:`\alpha` - that affect the absorption and attenuation of wave energy as it travels into and out of the boundary. 
 
 **:math:`\kappa`** is the scaling factor that adjust the effective speed of the wave within the CPML. :math:`\kappa` enhances absorption by compressesing the wave field and increasing the path length. A higher :math:`\kappa_{\text{max}}` value leads to better absorption by compressing the fields more, but values that are too high can cause numerical instability. Lower values improve stability but at the cost of less effective boundaries. An optimal value is given by 
 
@@ -30,6 +22,14 @@ followed by a scaling factor, :math:`\rho`, to find the maximum value
 .. math:: 	
 	
 	\sigma_{i,\text{max}} = \rho \cdot \sigma_{i,\text{opt}} 
+
+:math:`\alpha` is an artificial loss parameter that add an additional loss term to stabilize the CPML. This is primarily effective in eliminating evancescent and grazing waves with higher max values enhancing the dampening effect. Typically, a small non-zero value is used, and while there are a few equations for computing an optimum :math:`\alpha_{\text{max}}`, it was found that
+
+.. math:: 
+	
+	\alpha_{\text{max}} = 2 \pi f_{\text{src}} \varepsilon_0
+
+provides a generalized term for numerical stability and optimal performance.  
 
 There are different approaches to estimating the reflected power. This script computes the cumulative energy density in the boundary region over the full time interval by using a grid search over varying the proportionality constant, :math:`\rho`, and :math:`\kappa_{\text{max}}` values. Relative to a reference value, we can gauge the performance of the boundary conditions. The parameters can be adjusted by the user to optimize them. They are defined in the *prjrun* module and consist of: *kappa_max*, *sig_opt_scalar*, *alpha_max_scalar*, *Rcoef*, *NP*, and *NPA*. The reflection coefficient, *Rcoef*, is specific to seismic CPML, and *NP* and *NPA are the exponential terms for grading the CPML from the inner boundary to the outer boundary max value. *NPA* is specific for calculating :math:`\alpha` since it is auxiliary to both :math:`\sigma` and :math:`\kappa`. If changing these parameters is desired, you can do so by importing the *prjrun* module and directly assigning the variables: For instance,
 
@@ -160,7 +160,7 @@ A breakdown of the code is as follows.
 				domain.nx = domain.nx - 2*domain.cpml
 				domain.nz = domain.nz - 2*domain.cpml
 
-5. Visualize the output using a bivariate KDE plot. 
+5. Visualize the output using a bivariate KDE plot. Other types of plotting exists, but this is a quick and commonly used method. 
 
 .. code-block:: python
 	
@@ -169,20 +169,44 @@ A breakdown of the code is as follows.
 	cpd_z = cumulative_power_density_z[:,:,0]
 
 	# Create the kde plots 
-	kappa_grid, sigma_grid = np.meshgrid(kappa_max, sig_opt_scalar)
+	sigma_grid, kappa_grid = np.meshgrid( sig_opt_scalar, kappa_max)
 	kappa_flat = kappa_grid.ravel() 
 	sigma_flat = sigma_grid.ravel() 
 	cpd_x_flat = cpd_x.ravel()
 	cpd_z_flat = cpd_z.ravel()
 
 	fig, axs = plt.subplots(1,2, figsize = (12,6), sharey = True)
-	sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_x_flat, fill = True, ax = axs[0], cmap = "Blues")
-	sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_z_flat, fill = True, ax = axs[1], cmap = "Blues")
+	sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_x_flat/cpd_x_flat.max(), fill = True, ax = axs[0], cmap = "rocket_r", bw_adjust = 0.25, levels = 30)
+	sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_z_flat/cpd_x_flat.max(), fill = True, ax = axs[1], cmap = "rocket_r", bw_adjust = 0.25, levels = 30)
 
-	axs[0].set_xlabel(r'$\kappa_{\text{max}}$', fontsize = 16)
-	axs[0].set_ylabel(r'$\sigma_{\text{max}}/\sigma_{\text{opt}}$', fontsize = 16)
+	axs[0].set_ylabel(r'$\kappa_{\text{max}}$', fontsize = 16)
+	axs[0].set_xlabel(r'$\sigma_{\text{max}}/\sigma_{\text{opt}}$', fontsize = 16)
 	axs[0].set_title('Ex Cumulative Power Density')
-	axs[1].set_xlabel(r'$\kappa_{\text{max}}$', fontsize = 16)
-	axs[1].set_ylabel(r'$\sigma_{\text{max}}/\sigma_{opt}$', fontsize = 16)
+	axs[0].set_xlim( sig_opt_scalar.min(), sig_opt_scalar.max() )
+	axs[0].set_ylim( kappa_max.min(), kappa_max.max() )
+	axs[1].set_ylabel(r'$\kappa_{\text{max}}$', fontsize = 16)
+	axs[1].set_xlabel(r'$\sigma_{\text{max}}/\sigma_{opt}$', fontsize = 16)
 	axs[1].set_title('Ez Cumulative Power Density')
+	axs[1].set_xlim( sig_opt_scalar.min(), sig_opt_scalar.max())
+	axs[1].set_ylim(kappa_max.min(), kappa_max.max() )
 	plt.show()
+
+
+6. Save the outputs. This takes a while to run for even a small model. We can also run different ranges of alpha or sigma in batches and concatenate the data sets later. 
+
+.. code-block: python
+	
+	# Save the output so that we don't have to rerun it. 
+	data = {
+		'sig_opt_scalar': sig_opt_scalar, 
+		'kappa_max': kappa_max,
+		'power_density_x': cumulative_power_density_x,
+		'power_density_z': cumulative_power_density_z
+	}
+
+	with open('perf_data_output.pkl', 'wb') as f:
+		pickle.dump(data, f)
+
+The figure generated can be seen below. A high :math:`\kappa_{\text{max}}` along with a high :math:`\rho` would intuitively be less numerically stable than low values for each. What we see is that in the high value of each, not much energy is penetrating the boundary and instead being reflected back into the domain. However, at the opposite end of the spectrum, we want to make sure that energy isn't passing through the boundary layer. We can conclude that`\kappa_{\text{max}}` and :math:`\rho` values around 1.5 and 0.5-1.0, respectively, would be good choices and consistent with the litterature, but inconsistent with the equations above which estimated a `\kappa_{\text{max}}`.
+
+.. image:: figures/kappa_vs_sigma_perf.png
