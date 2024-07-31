@@ -2,6 +2,7 @@ import numpy as np
 from glob2 import glob
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pickle
 
 from seidart.routines import prjrun, sourcefunction 
 from seidart.routines.definitions import * 
@@ -94,8 +95,8 @@ cpd_x_flat = cpd_x.ravel()
 cpd_z_flat = cpd_z.ravel()
 
 fig, axs = plt.subplots(1,2, figsize = (12,6), sharey = True)
-sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_x_flat/cpd_x_flat.max(), fill = True, ax = axs[0], cmap = "YlGr", bw_adjust = 0.25)
-sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_z_flat/cpd_x_flat.max(), fill = True, ax = axs[1], cmap = "mako_r", bw_adjust = 0.25)
+sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_x_flat/cpd_x_flat.max(), fill = True, ax = axs[0], cmap = "rocket_r", bw_adjust = 0.25, levels = 30)
+sns.kdeplot(x = sigma_flat, y = kappa_flat, weights = cpd_z_flat/cpd_x_flat.max(), fill = True, ax = axs[1], cmap = "rocket_r", bw_adjust = 0.25, levels = 30)
 
 axs[0].set_ylabel(r'$\kappa_{\text{max}}$', fontsize = 16)
 axs[0].set_xlabel(r'$\sigma_{\text{max}}/\sigma_{\text{opt}}$', fontsize = 16)
@@ -106,6 +107,17 @@ axs[1].set_ylabel(r'$\kappa_{\text{max}}$', fontsize = 16)
 axs[1].set_xlabel(r'$\sigma_{\text{max}}/\sigma_{opt}$', fontsize = 16)
 axs[1].set_title('Ez Cumulative Power Density')
 axs[1].set_xlim( sig_opt_scalar.min(), sig_opt_scalar.max())
-axs[1].set_ylim( kappa_max.min(), kappa_max.max() )
+axs[1].set_ylim(kappa_max.min(), kappa_max.max() )
 plt.show()
 
+# ---------------------------------------------------------------------- 
+# Save the output so that we don't have to rerun it. 
+data = {
+	'sig_opt_scalar': sig_opt_scalar, 
+	'kappa_max': kappa_max,
+	'power_density_x': cumulative_power_density_x,
+	'power_density_z': cumulative_power_density_z
+}
+
+with open('perf_data_output.pkl', 'wb') as f:
+	pickle.dump(data, f)
