@@ -1,29 +1,33 @@
+# Written by Steven Bernsen
+# University of Maine
+# -----------------------------------------------------------------------------
+
 
 I,layered_glacier.png
 
-D,dim,2
+D,dim,2.5
 D,nx,1500
-D,ny,1
+D,ny,20
 D,nz,500
-D,dx,
+D,dx,1
 D,dy,1
-D,dz,
-D,cpml,20
+D,dz,1
+D,cpml,10
 D,nmats,11
 D,tfile,
 
 # number, id, R/G/B, Temperature, Density, Porosity, Water_Content, Anisotropic, ANG_File
-M,0,,77/77/77,,,,,,
-M,1,,85/153/255,,,,,,
-M,2,,128/179/255,,,,,,
-M,3,,170/204/255,,,,,,
-M,4,,179/128/255,,,,,,
-M,5,,179/179/179,,,,,,
-M,6,,204/170/255,,,,,,
-M,7,,229/213/255,,,,,,
-M,8,,230/230/230,,,,,,
-M,9,,255/42/42,,,,,,
-M,10,,255/128/128,,,,,,
+M,0,granite,77/77/77,-2,2500,2,5,False,
+M,1,snow,85/153/255,,,,,False, # Dense, cold firn
+M,2,snow,128/179/255,,,,,False, # Cold, low density firn
+M,3,snow,170/204/255,,,,,False, # Medium to high density snow; top layer below air
+M,4,ice1h,179/128/255,,,,,False, # Temperate ice; 3rd ice layer from bed
+M,5,wet_sand,179/179/179,,,,,False, # Cold but deformable sub glacial till
+M,6,ice1h,204/170/255,,,,,False, # Colder temperate ice; 4th layer from bed
+M,7,ice1h,229/213/255,,,,,False, # Cold ice; 5th layer from bed
+M,8,air,230/230/230,,,,,False,
+M,9,ice1h,255/42/42,,,,,False, # Temperate close to base; 2nd ice layer from bed
+M,10,ice1h,255/128/128,,,,,False, # At base/metlting point; 1st ice layer from bed
 
 # number, AlphaX, AlphaY, AlphaZ, fref
 A,0,0.0,0.0,0.0,1.0
