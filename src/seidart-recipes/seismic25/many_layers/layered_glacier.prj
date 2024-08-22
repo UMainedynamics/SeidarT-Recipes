@@ -1,0 +1,90 @@
+# Written by Steven Bernsen
+# University of Maine
+# -----------------------------------------------------------------------------
+
+
+I,layered_glacier.png
+
+D,dim,2.5
+D,nx,1500
+D,ny,20
+D,nz,500
+D,dx,1
+D,dy,1
+D,dz,1
+D,cpml,10
+D,nmats,11
+D,tfile,
+
+# number, id, R/G/B, Temperature, Density, Porosity, Water_Content, Anisotropic, ANG_File
+M,0,granite,77/77/77,-2,2500,2,5,False,
+M,1,snow,85/153/255,,,,,False, # Dense, cold firn
+M,2,snow,128/179/255,,,,,False, # Cold, low density firn
+M,3,snow,170/204/255,,,,,False, # Medium to high density snow; top layer below air
+M,4,ice1h,179/128/255,,,,,False, # Temperate ice; 3rd ice layer from bed
+M,5,wet_sand,179/179/179,,,,,False, # Cold but deformable sub glacial till
+M,6,ice1h,204/170/255,,,,,False, # Colder temperate ice; 4th layer from bed
+M,7,ice1h,229/213/255,,,,,False, # Cold ice; 5th layer from bed
+M,8,air,230/230/230,,,,,False,
+M,9,ice1h,255/42/42,,,,,False, # Temperate close to base; 2nd ice layer from bed
+M,10,ice1h,255/128/128,,,,,False, # At base/metlting point; 1st ice layer from bed
+
+# number, AlphaX, AlphaY, AlphaZ, fref
+A,0,0.0,0.0,0.0,1.0
+A,1,0.0,0.0,0.0,1.0
+A,2,0.0,0.0,0.0,1.0
+A,3,0.0,0.0,0.0,1.0
+A,4,0.0,0.0,0.0,1.0
+A,5,0.0,0.0,0.0,1.0
+A,6,0.0,0.0,0.0,1.0
+A,7,0.0,0.0,0.0,1.0
+A,8,0.0,0.0,0.0,1.0
+A,9,0.0,0.0,0.0,1.0
+A,10,0.0,0.0,0.0,1.0
+
+# The source parameters for the seismic model
+S,dt,
+S,time_steps,1
+S,x,1.0
+S,y,1.0
+S,z,1.0
+S,f0,1.0
+S,theta,0
+S,phi,0
+
+# id, C11, C12, C13, C22, C23, C33, C44, C55, C66, rho
+C,0,,,,,,,,,,
+C,1,,,,,,,,,,
+C,2,,,,,,,,,,
+C,3,,,,,,,,,,
+C,4,,,,,,,,,,
+C,5,,,,,,,,,,
+C,6,,,,,,,,,,
+C,7,,,,,,,,,,
+C,8,,,,,,,,,,
+C,9,,,,,,,,,,
+C,10,,,,,,,,,,
+
+# The source parameters for the electromagnetic model
+E,dt,
+E,time_steps,1
+E,x,1.0
+E,y,1.0
+E,z,1.0
+E,f0,1.0
+E,theta,0
+E,phi,0
+
+# id, e11, e12, e13, e22, e23, e33, s11, s12, s13, s22, s23, s33
+P,0,,,,,,,,,,
+P,1,,,,,,,,,,
+P,2,,,,,,,,,,
+P,3,,,,,,,,,,
+P,4,,,,,,,,,,
+P,5,,,,,,,,,,
+P,6,,,,,,,,,,
+P,7,,,,,,,,,,
+P,8,,,,,,,,,,
+P,9,,,,,,,,,,
+P,10,,,,,,,,,,
+
