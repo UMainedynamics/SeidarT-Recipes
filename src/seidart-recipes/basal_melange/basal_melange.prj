@@ -25,7 +25,7 @@ A,3,0.0,0.0,0.0,1.0
 
 # The source parameters for the seismic model
 S,dt,4.397493587391956e-05
-S,time_steps,3000
+S,time_steps,4000
 S,x,175.0
 S,y,1.0
 S,z,3.0
