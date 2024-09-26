@@ -96,7 +96,7 @@ norm = TwoSlopeNorm(
     vcenter=0
 )
 
-fig, ax = plt.subplots(figsize = (5,6), constrained_layout = True )
+fig, ax = plt.subplots(figsize = (7,6), constrained_layout = True )
 ax.imshow(
     array_vz.agc_corrected_timeseries, 
     cmap = 'seismic', aspect = 'auto', norm = norm,

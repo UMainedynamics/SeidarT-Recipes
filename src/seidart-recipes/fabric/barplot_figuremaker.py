@@ -37,7 +37,7 @@ tensor_labels = np.array(
                                                                     r'$c_{66}$'
     ]
 )
-tensor_colors = np.array(['#ff0040', '#8bad1a', '#f03ac8', '#1e3282'])
+tensor_colors = np.array(['#ff0040', '#8bad1a', '#f03ac8', '#1e3282', '#00decf'])
 
 coeffs = seismic.tensor_coefficients[:, 1:-1]
 
@@ -49,11 +49,11 @@ fig, (ax1, ax2, ax3) = plt.subplots(
 
 # Set up x-axis labels
 x = np.arange(len(tensor_labels))
-x_offset = np.array([-0.21, -0.07, 0.07, 0.21 ])
-markers = ['o', 's', 'v', 'D']
+x_offset = np.array([-0.21, -0.07, 0.07, 0.21, 0.35 ])
+markers = ['o', 's', 'v', 'D','X']
 
 # Labels for the legend
-legend_labels = ['Multipole 1', 'Multipole 2', 'Multipole 3', 'Ref. Single Pole']
+legend_labels = ['Multipole 1', 'Multipole 2', 'Multipole 3', 'Single Pole', 'Isotropic']
 
 # Plot each row of coefficients with different colors
 m, n = coeffs.shape
@@ -79,7 +79,7 @@ for ind in range(m):
 # Set y-limits for each subplot
 ax1.set_ylim(1.0e10, 1.52e10)
 ax2.set_ylim(2.2e9, 8.5e9)
-ax3.set_ylim(-1e8, 1.5e8)
+ax3.set_ylim(-3.5e8, 3e8)
 
 # Add the tensor labels to the x-axis for the bottom plot
 ax3.set_xticks(x)
@@ -98,9 +98,9 @@ ax2.yaxis.set_major_formatter(formatter)
 ax3.yaxis.set_major_formatter(formatter)
 
 # Set specific tick values for each subplot
-ax1.set_yticks([1.1e10, 1.3e10, 1.5e10])
-ax2.set_yticks([2.5e9, 4e9, 6e9, 8e9])
-ax3.set_yticks([-1e8, -0.5e8, 0, 0.5e8, 1e8])
+ax1.set_yticks([1.1e10, 1.2e10, 1.3e10, 1.4e10, 1.5e10])
+ax2.set_yticks([2.5e9, 4e9, 5e9, 6e9, 7e9, 8e9])
+ax3.set_yticks([-3e8, -2e8, -1e8, 0, 1e8, 2e8])
 
 # Add more space between the axis labels and the ticks
 ax1.tick_params(axis='y', labelsize=9, pad=15)
