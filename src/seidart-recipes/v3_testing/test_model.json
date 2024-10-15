@@ -1,0 +1,132 @@
+{
+    "Domain": {
+        "dim": 2,
+        "nx": 700,
+        "ny": 1,
+        "nz": 400,
+        "dx": 0.5,
+        "dy": 1,
+        "dz": 0.5,
+        "cpml": 10,
+        "nmats": 5,
+        "image_file": "englacialwater.png"
+    },
+    "Materials": [
+        {
+            "id": 0,
+            "name": "ice1h",
+            "rgb": "0/255/255",
+            "temperature": -10,
+            "density": 900,
+            "porosity": 0,
+            "water_content": 0,
+            "is_anisotropic": true,
+            "euler_angles": "isotropic.csv"
+        },
+        {
+            "id": 1,
+            "name": "granite",
+            "rgb": "26/26/26",
+            "temperature": -10,
+            "density": 2500,
+            "porosity": 2,
+            "water_content": 10,
+            "is_anisotropic": false,
+            "euler_angles": null
+        },
+        {
+            "id": 2,
+            "name": "air",
+            "rgb": "100/100/100",
+            "temperature": -10,
+            "density": 1.4,
+            "porosity": 0,
+            "water_content": 0,
+            "is_anisotropic": false,
+            "euler_angles": null
+        },
+        {
+            "id": 3,
+            "name": "water",
+            "rgb": "128/0/0",
+            "temperature": -10,
+            "density": 1000,
+            "porosity": 0,
+            "water_content": 0,
+            "is_anisotropic": false,
+            "euler_angles": null
+        },
+        {
+            "id": 4,
+            "name": "snow",
+            "rgb": "230/230/230",
+            "temperature": -10,
+            "density": 500,
+            "porosity": 60,
+            "water_content": 10,
+            "is_anisotropic": false,
+            "euler_angles": null
+        }
+    ],
+    "Seismic": {
+        "Time_Parameters": {
+            "dt": null,
+            "time_steps": 2000
+        },
+        "Attenuation": [
+            {
+                "id": 0,
+                "name": "ice1h",
+                "alpha_x": 0.0,
+                "alpha_y": 0.0,
+                "alpha_z": 0.0,
+                "reference_frequency": 1.0
+            },
+            {
+                "id": 1,
+                "name": "granite",
+                "alpha_x": 0.0,
+                "alpha_y": 0.0,
+                "alpha_z": 0.0,
+                "reference_frequency": 1.0
+            },
+            {
+                "id": 2,
+                "name": "air",
+                "alpha_x": 0.0,
+                "alpha_y": 0.0,
+                "alpha_z": 0.0,
+                "reference_frequency": 1.0
+            },
+            {
+                "id": 3,
+                "name": "water",
+                "alpha_x": 0.0,
+                "alpha_y": 0.0,
+                "alpha_z": 0.0,
+                "reference_frequency": 1.0
+            },
+            {
+                "id": 4,
+                "name": "snow",
+                "alpha_x": 0.0,
+                "alpha_y": 0.0,
+                "alpha_z": 0.0,
+                "reference_frequency": 1.0
+            }
+        ],
+        "Source": {
+            "x": 175.0,
+            "y": 1.0,
+            "z": 5.0,
+            "xind": null,
+            "yind": null,
+            "zind": null,
+            "source_frequency": 80.0,
+            "x-z_rotation": 90,
+            "x-y_rotation": 0,
+            "amplitude": 10000000,
+            "source_type": "gaus1"
+        },
+        "Stiffness_Coefficients": [
+            
