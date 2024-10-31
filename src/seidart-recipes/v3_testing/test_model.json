@@ -1,11 +1,11 @@
 {
     "Domain": {
-        "dim": 2,
+        "dim": 2.5,
         "nx": 700,
-        "ny": 1,
+        "ny": 10,
         "nz": 400,
         "dx": 0.5,
-        "dy": 1,
+        "dy": 0.5,
         "dz": 0.5,
         "cpml": 10,
         "nmats": 5,
@@ -74,14 +74,14 @@
             "time_steps": 2000,
             "x": 175.0,
             "y": 1.0,
-            "z": 5.0,
+            "z": 20.5,
             "xind": 350,
-            "yind": 1,
-            "zind": 10,
-            "source_frequency": 80.0,
+            "yind": 2,
+            "zind": 41,
+            "source_frequency": 30.0,
             "x-z_rotation": 90,
             "x-y_rotation": 0,
-            "amplitude": 10000000,
+            "amplitude": 10000000.0,
             "source_type": "gaus1"
         },
         "Attenuation": [
@@ -150,7 +150,7 @@
                 "c55": 3894221894.0,
                 "c56": 3246469.0,
                 "c66": 4120880503.0,
-                "density": 900.0
+                "rho": 900.0
             },
             {
                 "id": 1,
@@ -175,7 +175,7 @@
                 "c55": 15953781247.0,
                 "c56": 0.0,
                 "c66": 15953781247.0,
-                "density": 2452.0208291275994
+                "rho": 2452.0208291275994
             },
             {
                 "id": 2,
@@ -200,7 +200,7 @@
                 "c55": 0.0,
                 "c56": 0.0,
                 "c66": 0.0,
-                "density": 1.4
+                "rho": 1.4
             },
             {
                 "id": 3,
@@ -225,7 +225,7 @@
                 "c55": 0.0,
                 "c56": 0.0,
                 "c66": 0.0,
-                "density": 1000.0
+                "rho": 1000.0
             },
             {
                 "id": 4,
@@ -250,24 +250,24 @@
                 "c55": 1608204.0,
                 "c56": 0.0,
                 "c66": 1608204.0,
-                "density": 260.624873827978
+                "rho": 260.624873827978
             }
         ]
     },
     "Electromagnetic": {
         "Source": {
-            "dt": null,
-            "time_steps": null,
+            "dt": 9.629166007732354e-10,
+            "time_steps": 2000,
             "x": 175.0,
-            "y": 1.0,
-            "z": 5.0,
-            "xind": null,
-            "yind": null,
-            "zind": null,
+            "y": 5.0,
+            "z": 20.0,
+            "xind": 350,
+            "yind": 10,
+            "zind": 40,
             "source_frequency": 10000000.0,
             "x-z_rotation": 0,
             "x-y_rotation": 0,
-            "amplitude": 1.0,
+            "amplitude": 10000000.0,
             "source_type": "gaus1"
         },
         "Permittivity_Coefficients": [

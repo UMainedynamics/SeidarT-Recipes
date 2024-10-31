@@ -11,6 +11,9 @@ src/seidart-recipes/seismic25/two_layer/*.dat
 src/seidart-recipes/seismic25/many_layer/*.dat
 src/seidart-recipes/wavefield_animation/*.dat
 src/seidart-recipes/basal_melange/*.dat
+src/seidart-recipes/v3_testing/*.dat 
+src/seidart-recipes/v3_testing/test2/*.dat 
+src/seidart-recipes/v3_testing/test3/*.dat
 recipes/dipping_bed
 recipes/__init__.py
 recipes/masw
