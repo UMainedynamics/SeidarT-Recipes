@@ -14,7 +14,6 @@ domain, material, seismic, electromag = loadproject(
 )
 
 # Compute the tensor coefficients
-material.material_flag = True
 seismic.build(material, domain, recompute_tensors = False)
 seismic.kband_check(domain)
 seismic.run()
@@ -33,7 +32,6 @@ frame_interval = 20
 slicer(project_file, 'Vz', 15, frame_interval, frame_delay)
 
 # ------------------------------------------------------------------------------
-# material.material_flag = True
 # electromag.build(material, domain, recompute_tensors = True)
 # electromag.kband_check(domain)
 # electromag.run()

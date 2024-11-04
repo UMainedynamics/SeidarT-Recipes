@@ -1,30 +1,25 @@
-from seidart.routines import prjbuild, prjrun, sourcefunction
+from seidart.routines.definitions import * 
+from seidart.routines.classes import Domain, Material, Model
 from seidart.routines.arraybuild import Array
 from seidart.visualization.im2anim import build_animation
 
-prjfile = 'single_source_test.prj' 
-rcxfile = 'receivers.xyz'
-complex_values = False
+project_file = 'single_source.json' 
+receiver_file = 'receivers.xyz'
 
 ## Initiate the model and domain objects
-dom, mat, seis, em = prjrun.domain_initialization(prjfile)
+domain, material, seis, em = loadproject(
+    project_file, Domain(), Material(), Model(), Model() 
+)
 
 ## Compute the permittivity coefficients
-# prjrun.status_check(em, mat, dom, prjfile)
-prjrun.status_check(
-    em, mat, dom, prjfile, append_to_prjfile = True
-)
+em.build(material, domain)
+# em.kband_check(domain)
+em.run() 
 
-timevec, fx, fy, fz, srcfn = sourcefunction(em, 10, 'gaus1')
-
-prjrun.runelectromag(em, mat, dom, use_complex_equations = complex_values)
-
-array_ex = Array('Ex', prjfile, rcxfile, is_complex = complex_values)
+array_ex = Array('Ex', project_file, receiver_file)
 # array_ex.gain = int(em.time_steps/5)
 array_ex.exaggeration = 0.1 
-array_ex.sectionplot(
-    plot_complex = False
-)
+array_ex.sectionplot()
 
 # Let's plot a trace for the 10th receiver in the list of receivers. 
 receiver_number = 10
@@ -39,19 +34,15 @@ frame_interval = 10
 alpha_value = 0.3
 
 build_animation(
-        prjfile, 
+        project_file, 
         'Ex', frame_delay, frame_interval, alpha_value, 
-        is_complex = complex_values, 
-        is_single_precision = True
 )
 
 # We can do the same for the z-direction
 array_ez = Array('Ez', prjfile, rcxfile, is_complex = complex_values)
 array_ez.gain = int(em.time_steps/3)
 array_ez.exaggeration = 0.1
-array_ez.sectionplot(
-    plot_complex = False
-)
+array_ez.sectionplot()
 
 array_ez.wiggleplot(receiver_number, figure_size = (5,8))
 array_ex.save()
@@ -59,7 +50,4 @@ array_ex.save()
 build_animation(
         prjfile, 
         'Ex', frame_delay, frame_interval, alpha_value, 
-        is_complex = complex_values, 
-        is_single_precision = True,
-        plottype = 'energy_density'
 )
