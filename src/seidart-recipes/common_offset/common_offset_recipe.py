@@ -14,7 +14,6 @@ co = CommonOffset(
     prjfile, 
     rcxfile, 
     receiver_indices = False, 
-    is_complex = is_complex,
     single_precision = True,
     status_check = False
 )
@@ -23,6 +22,6 @@ co.co_run(seismic = False)
 
 co.gain = 800
 co.exaggeration = 0.05
-co.sectionplot(plot_complex = is_complex)
+co.sectionplot()
 co.save()
 
