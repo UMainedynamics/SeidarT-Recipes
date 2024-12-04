@@ -6,7 +6,7 @@ src/seidart-recipes/load_array_from_file/*.dat
 src/seidart-recipes/fabric/*.dat
 src/seidart-recipes/three_component_plot/*.dat
 src/seidart-recipes/boundary_performance/*.dat
-src/seidart-recipes/cross-borehole/*.dat
+src/seidart-recipes/cross_borehole/*.dat
 src/seidart-recipes/seismic25/two_layer/*.dat
 src/seidart-recipes/seismic25/many_layer/*.dat
 src/seidart-recipes/wavefield_animation/*.dat
