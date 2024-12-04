@@ -17,13 +17,13 @@ material.material_flag = True
 seismic.build(material, domain, recompute_tensors = True)
 seismic.kband_check(domain)
 
-import time 
-start_time = time.time() 
+# import time 
+# start_time = time.time() 
 seismic.run()
-single_thread_time = time.time() - start_time
-start_time = time.time() 
-seismic.run(num_threads = 3)
-multi_thread_time = time.time() - start_time
+# single_thread_time = time.time() - start_time
+# start_time = time.time() 
+# seismic.run(num_threads = 3)
+# multi_thread_time = time.time() - start_time
 
 # Create the GIF animation so we can 
 frame_delay = 5 

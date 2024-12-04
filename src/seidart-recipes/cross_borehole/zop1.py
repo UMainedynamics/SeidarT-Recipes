@@ -3,37 +3,35 @@ import pandas as pd
 import matplotlib.pyplot as plt 
 
 from seidart.routines.definitions import *
-from seidart.routines import prjrun, sourcefunction 
+from seidart.routines.classes import Domain, Material, Model 
 from seidart.simulations.common_offset import CommonOffset
 from seidart.visualization.im2anim import build_animation
 from seidart.routines.arraybuild import Array
 
 
-prjfile = 'zop.prj' 
+project_file = 'zop.json' 
 rcxfile = 'gusmeroli_zop1r.xyz'
 srcfile = 'gusmeroli_zop1s.xyz'
 channel = 'Ez'
-is_complex = False
 
 # ------------------------------------------------------------------------------
 # 
-domain, material, seismic, electromag = prjrun.domain_initialization(prjfile)
-prjrun.status_check(
-    electromag, material, domain, prjfile, append_to_prjfile = False
+domain, material, seismic, electromag = loadproject(
+    project_file, Domain(), Material(), Model(), Model()
 )
+electromag.build(material, domain, recompute_tensors = False)
+electromag.kband_check(domain)
 
 zop1 = CommonOffset(
     srcfile, 
     channel, 
-    prjfile, 
+    project_file, 
     rcxfile, 
     receiver_indices = False, 
-    is_complex = is_complex,
     single_precision = True,
-    status_check = False
 )
 zop1.output_basefile = 'zop1.ez'
-zop1.co_run()
+zop1.co_run(parallel = False)
 zop1.srcrcx_distance()
 
 # ------------------------------- Custom Ploting -------------------------------

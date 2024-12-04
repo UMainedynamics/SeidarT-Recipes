@@ -38,16 +38,17 @@ build_animation(
         'Ex', frame_delay, frame_interval, alpha_value, 
 )
 
+# ----------
 # We can do the same for the z-direction
-array_ez = Array('Ez', prjfile, rcxfile, is_complex = complex_values)
+array_ez = Array('Ez', project_file, receiver_file)
 array_ez.gain = int(em.time_steps/3)
 array_ez.exaggeration = 0.1
 array_ez.sectionplot()
 
 array_ez.wiggleplot(receiver_number, figure_size = (5,8))
-array_ex.save()
+array_ez.save()
 
 build_animation(
-        prjfile, 
-        'Ex', frame_delay, frame_interval, alpha_value, 
+        project_file, 
+        'Ez', frame_delay, frame_interval, alpha_value, 
 )
