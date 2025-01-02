@@ -31,7 +31,7 @@ zop1 = CommonOffset(
     single_precision = True,
 )
 zop1.output_basefile = 'zop1.ez'
-zop1.co_run(parallel = True)
+zop1.co_run(parallel = False)
 zop1.srcrcx_distance()
 
 # ------------------------------- Custom Ploting -------------------------------

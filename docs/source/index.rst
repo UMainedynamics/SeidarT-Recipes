@@ -20,3 +20,4 @@ Welcome to SeidarT-Recipes
     common-offset-readme 
     synthetic-fabric-readme
     boundary-performance-readme
+    cross-borehole-readme
