@@ -10,8 +10,8 @@ from seidart.routines.arraybuild import Array
 
 
 project_file = 'zop.json' 
-rcxfile = 'gusmeroli_zop1r.xyz'
-srcfile = 'gusmeroli_zop1s.xyz'
+rcxfile = 'zop1r.xyz'
+srcfile = 'zop1s.xyz'
 channel = 'Ez'
 
 # ------------------------------------------------------------------------------
