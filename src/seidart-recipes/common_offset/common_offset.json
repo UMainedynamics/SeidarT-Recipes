@@ -92,19 +92,19 @@
     ],
     "Seismic": {
         "Source": {
-            "dt": null,
+            "dt": 0.0001,
             "time_steps": 1,
             "x": 1.0,
             "y": 1.0,
             "z": 1.0,
-            "xind": null,
-            "yind": null,
-            "zind": null,
+            "xind": 1,
+            "yind": 1,
+            "zind": 1,
             "source_frequency": 1.0,
             "x-z_rotation": 0,
             "x-y_rotation": 0,
             "amplitude": 1.0,
-            "source_type": null
+            "source_type": "gaus1"
         },
         "Attenuation": [
             {
@@ -381,21 +381,21 @@
             },
             {
                 "id": 3,
-                "e11": 95.0,
+                "e11": 173.067,
                 "e12": 0.0,
                 "e13": 0.0,
-                "e22": 95.0,
+                "e22": 173.067,
                 "e23": 0.0,
-                "e33": 95.0
+                "e33": 173.067
             },
             {
                 "id": 4,
-                "e11": 65.0,
+                "e11": 80.36,
                 "e12": 0.0,
                 "e13": 0.0,
-                "e22": 65.0,
+                "e22": 80.36,
                 "e23": 0.0,
-                "e33": 65.0
+                "e33": 80.36
             },
             {
                 "id": 5,

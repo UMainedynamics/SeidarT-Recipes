@@ -8,8 +8,8 @@ from seidart.visualization.im2anim import build_animation
 from seidart.routines.classes import Domain, Material, Model 
 
 project_file = 'common_offset.json' 
-rcxfile = 'common_offset_receivers.xyz'
-srcfile = 'common_offset_sources.xyz'
+receiver_file = 'common_offset_receivers.xyz'
+source_file = 'common_offset_sources.xyz'
 channel = 'Ex'
 
 domain, material, seismic, electromag = loadproject(
@@ -22,10 +22,10 @@ electromag.build(material, domain, recompute_tensors = False)
 electromag.kband_check(domain)
 
 co = CommonOffset(
-    srcfile, 
+    source_file, 
     channel, 
     project_file, 
-    rcxfile, 
+    receiver_file, 
     receiver_indices = False, 
     single_precision = True,
 )
@@ -33,7 +33,7 @@ co = CommonOffset(
 co.co_run(parallel = False)
 
 co.gain = 800
-co.exaggeration = 0.05
+co.exaggeration = 0.03
 co.sectionplot()
 co.save()
 
