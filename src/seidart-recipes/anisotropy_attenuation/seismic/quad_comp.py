@@ -253,33 +253,33 @@ build_animation(
    
 # ------------------------------------------------------------------------------
 
-# fs = 1/seis.dt
-# window_length = 2**7 #seis.time_steps-1 #2**14
+fs = 1/seis.dt
+window_length = 2**7 #seis.time_steps-1 #2**14
 
 
-# t_arrz, f_arrz, mag_isz, phase_isz = moving_window_phase_magnitude_tapered(
-#     array_vz1.timeseries,
-#     array_vz2.timeseries,
-#     fs,
-#     window_len=window_length,
-#     overlap=0.5,
-#     fft_len=window_length*2  # zero-pad to 512 for improved freq resolution
-# )
+t_arrz, f_arrz, mag_isz, phase_isz = moving_window_phase_magnitude_tapered(
+    array_vz1.timeseries[:,0],
+    array_vz1.timeseries[:,-1],
+    fs,
+    window_len=window_length,
+    overlap=0.5,
+    fft_len=window_length*2  # zero-pad to 512 for improved freq resolution
+)
 
-# rcx = 1
-# plot_median_variance(
-#     f_arrz, mag_isz, phase_isz, 
-#     receiver_index=rcx, use_std=True, 
-#     # fmin = 1.0,
-#     # fmax = 500,
-#     ylim_mag = [-50, 50],
-#     # ylim_phase = [-0.5,0.75],
-#     log_freq = True
-# )
+rcx = 10
+plot_median_variance(
+    f_arrz, mag_isz, phase_isz, 
+    receiver_index=rcx, use_std=True, 
+    fmin = 1.0,
+    fmax = 500,
+    # ylim_mag = [-50, 50],
+    # ylim_phase = [-0.5,0.75],
+    log_freq = False
+)
 
 # ------------------------------------------------------------------------------
-vz_iso = array_vz1.timeseries[:,3]
-vz_iso_atten = array_vz1.timeseries[:,-4]
+vz_iso = array_vz1.timeseries[:,0]
+vz_iso_atten = array_vz1.timeseries[:,-1]
 
 vz_aniso = array_vz2.timeseries[:,3]
 vz_aniso_atten = array_vz2.timeseries[:,-4]
