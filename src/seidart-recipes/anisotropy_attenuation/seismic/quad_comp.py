@@ -10,6 +10,7 @@ from seidart.visualization.im2anim import build_animation
 
 from scipy.signal.windows import hann
 import matplotlib.pyplot as plt 
+from mpl_toolkits.mplot3d import Axes3D
 
 def moving_window_phase_magnitude_tapered(
         A, B, fs, window_len, overlap=0.5, fft_len=None
@@ -280,14 +281,19 @@ plot_median_variance(
 # ------------------------------------------------------------------------------
 vz_iso = array_vz1.timeseries[:,0]
 vz_iso_atten = array_vz1.timeseries[:,-1]
-
 vz_aniso = array_vz2.timeseries[:,3]
 vz_aniso_atten = array_vz2.timeseries[:,-4]
+
+vx_iso = array_vx1.timeseries[:,0]
+vx_iso_atten = array_vx1.timeseries[:,-1]
+vx_aniso = array_vx2.timeseries[:,3]
+vx_aniso_atten = array_vx2.timeseries[:,-4]
+
 
 timevector = np.arange(seis.time_steps) * seis.dt
 
 fig, ax = plt.subplots() 
-ax.plot(timevector, vz_iso_atten, 'r')
-ax.plot(timevector, vz_iso, 'b')
+ax.plot(timevector, vx_aniso_atten, 'r')
+ax.plot(timevector, -vx_aniso, 'b')
 plt.show()
 
