@@ -13,7 +13,7 @@ domain, material, seis, em = loadproject(
 
 ## Compute the permittivity coefficients
 em.build(material, domain)
-# em.kband_check(domain)
+em.kband_check(domain)
 em.run() 
 
 array_ex = Array('Ex', project_file, receiver_file)
