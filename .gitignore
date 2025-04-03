@@ -16,6 +16,7 @@ src/seidart-recipes/v3_testing/test2/*.dat
 src/seidart-recipes/v3_testing/test3/*.dat
 src/seidart-recipes/anisotropy_attenuation/seismic/*.dat
 src/seidart-recipes/anisotropy_attenuation/em/*.dat 
+src/seidart-recipes/common_shot_gather/cpml_parameter_optimization/*.dat
 recipes/dipping_bed
 recipes/__init__.py
 recipes/masw
