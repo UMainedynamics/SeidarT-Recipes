@@ -1,20 +1,20 @@
 {
     "Domain": {
-        "dim": 2,
+        "dim": 2.5,
         "nx": 400,
         "ny": 50,
         "nz": 400,
         "dx": 0.1,
         "dy": 0.1,
         "dz": 0.1,
-        "cpml": 20,
+        "cpml": 16,
         "nmats": 4,
         "sig_opt_scalar": 1.5,
-        "alpha_max_scalar": 1.0,
-        "kappa_max": 11,
+        "alpha_max_scalar": 0.3,
+        "kappa_max": 5,
         "NP": 2,
         "NPA": 2,
-        "Rcoef": 0.001,
+        "Rcoef": 1e-06,
         "image_file": "quads.png"
     },
     "Materials": [
@@ -65,8 +65,8 @@
     ],
     "Seismic": {
         "Source": {
-            "dt": 6.181925588000607e-06,
-            "time_steps": 3200,
+            "dt": 4.121283725333738e-06,
+            "time_steps": 6800,
             "x": 20.0,
             "y": 2.5,
             "z": 20.0,
@@ -74,8 +74,8 @@
             "yind": 25,
             "zind": 200,
             "source_frequency": 300.0,
-            "x-z_rotation": 90,
-            "x-y_rotation": 0,
+            "x-z_rotation": 45,
+            "x-y_rotation": 45,
             "amplitude": 10000000.0,
             "source_type": "gaus1"
         },

@@ -9,6 +9,7 @@ from seidart.routines.arraybuild import Array
 from seidart.visualization.im2anim import build_animation
 
 from scipy.signal.windows import hann
+from scipy.signal import hilbert, correlate
 import matplotlib.pyplot as plt 
 from mpl_toolkits.mplot3d import Axes3D
 
@@ -232,68 +233,25 @@ domain, material, seis, em = loadproject(
 seis.build(material, domain)
 seis.kband_check(domain)
 seis.run() 
-# array_vx = Array('Vx', project_file, receiver_file)
+
 array_vx1 = Array('Vx', project_file, receiver_file1)
+array_vx1.save(output_basefile = 'vx1')
+
 array_vx2 = Array('Vx', project_file, receiver_file2)
+array_vx2.save(output_basefile = 'vx2')
+
+array_vy1 = Array('Vy', project_file, receiver_file1)
+array_vy1.save(output_basefile = 'vy1')
+
+array_vy2 = Array('Vy', project_file, receiver_file2)
+array_vy2.save(output_basefile = 'vy2')
+
 array_vz1 = Array('Vz', project_file, receiver_file1)
+array_vz1.save(output_basefile = 'vz1')
+
 array_vz2 = Array('Vz', project_file, receiver_file2)
-
-frame_delay = 5 
-frame_interval = 10 
-alpha_value = 0.3
-
-build_animation(
-        project_file, 
-        'Vz', frame_delay, frame_interval, alpha_value, 
-)
-
-build_animation(
-        project_file, 
-        'Vx', frame_delay, frame_interval, alpha_value, 
-)
-   
-# ------------------------------------------------------------------------------
-
-fs = 1/seis.dt
-window_length = 2**7 #seis.time_steps-1 #2**14
+array_vz2.save(output_basefile = 'vz2')
 
 
-t_arrz, f_arrz, mag_isz, phase_isz = moving_window_phase_magnitude_tapered(
-    array_vz1.timeseries[:,0],
-    array_vz1.timeseries[:,-1],
-    fs,
-    window_len=window_length,
-    overlap=0.5,
-    fft_len=window_length*2  # zero-pad to 512 for improved freq resolution
-)
 
-rcx = 10
-plot_median_variance(
-    f_arrz, mag_isz, phase_isz, 
-    receiver_index=rcx, use_std=True, 
-    fmin = 1.0,
-    fmax = 500,
-    # ylim_mag = [-50, 50],
-    # ylim_phase = [-0.5,0.75],
-    log_freq = False
-)
-
-# ------------------------------------------------------------------------------
-vz_iso = array_vz1.timeseries[:,0]
-vz_iso_atten = array_vz1.timeseries[:,-1]
-vz_aniso = array_vz2.timeseries[:,3]
-vz_aniso_atten = array_vz2.timeseries[:,-4]
-
-vx_iso = array_vx1.timeseries[:,0]
-vx_iso_atten = array_vx1.timeseries[:,-1]
-vx_aniso = array_vx2.timeseries[:,3]
-vx_aniso_atten = array_vx2.timeseries[:,-4]
-
-
-timevector = np.arange(seis.time_steps) * seis.dt
-
-fig, ax = plt.subplots() 
-ax.plot(timevector, vx_aniso_atten, 'r')
-ax.plot(timevector, -vx_aniso, 'b')
-plt.show()
 
