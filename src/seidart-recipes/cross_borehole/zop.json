@@ -9,6 +9,12 @@
         "dz": 0.1,
         "cpml": 10,
         "nmats": 7,
+        "sig_opt_scalar": 1.2,
+        "alpha_max_scalar": 1.0,
+        "NP": 2,
+        "NPA": 2,
+        "kappa_max": 5,
+        "Rcoef": 0.001,
         "image_file": "gusmeroli.png"
     },
     "Materials": [

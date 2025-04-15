@@ -8,11 +8,11 @@ from seidart.routines.fabricsynth import Fabric
 # ------------------
 isotropic1 = {
     'distribution': 'uniform',
-    'npts': [50000],
+    'npts': [10000],
     'trend_low': [0],
     'trend_high': [360],
     'plunge_low': [0],
-    'plunge_high': [180],
+    'plunge_high': [90],
     'orientation_low': [0],
     'orientation_high': [360],
 }
@@ -21,12 +21,12 @@ isotropic1 = {
 is1 = Fabric(
     isotropic1, output_filename = 'isotropic.csv', plot = False
 )
-# is1.cmap_name = 'nipy_spectral'
-# is1.custom_cmap(n_colors = 30)
-# is1.contour_levels = 30
-# is1.alpha = 0.3 
-# is1.marker_size = 1 
-# is1.projection_plot(vmin = 1.0, colorbar_location = 'right')
+is1.cmap_name = 'nipy_spectral'
+is1.custom_cmap(n_colors = 30)
+is1.contour_levels = 30
+is1.alpha = 0.3 
+is1.marker_size = 1 
+is1.projection_plot(vmin = 1.0, colorbar_location = 'right')
 
 # ------------------
 multipole1 = {

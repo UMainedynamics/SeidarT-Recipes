@@ -1,0 +1,192 @@
+{
+    "Domain": {
+        "dim": 2,
+        "nx": 100,
+        "ny": 50,
+        "nz": 200,
+        "dx": 1,
+        "dy": 1,
+        "dz": 1,
+        "cpml": 10,
+        "nmats": 2,
+        "sig_opt_scalar": 1.2,
+        "alpha_max_scalar": 1.0,
+        "NP": 2,
+        "NPA": 2,
+        "kappa_max": 5,
+        "Rcoef": 0.001,
+        "image_file": "split_material.png"
+    },
+    "Materials": [
+        {
+            "id": 0,
+            "name": "ice1h",
+            "rgb": "102/102/102",
+            "temperature": -10,
+            "density": 910,
+            "porosity": 0,
+            "water_content": 0,
+            "is_anisotropic": false,
+            "euler_angles": null
+        },
+        {
+            "id": 1,
+            "name": "ice1h",
+            "rgb": "200/190/183",
+            "temperature": -10,
+            "density": 910,
+            "porosity": 0,
+            "water_content": 0,
+            "is_anisotropic": true,
+            "euler_angles": 
+        }
+    ],
+    "Seismic": {
+        "Source": {
+            "dt": 1e-12,
+            "time_steps": 1600,
+            "x": 50.0,
+            "y": 25.0,
+            "z": 100.0,
+            "xind": 0,
+            "yind": 0,
+            "zind": 0,
+            "source_frequency": 40.0,
+            "x-z_rotation": 90,
+            "x-y_rotation": 0,
+            "amplitude": 1.0e7,
+            "source_type": "gaus1"
+        },
+        "Attenuation": [
+            {
+                "id": 0,
+                "gamma_x": 0.0,
+                "gamma_y": 0.0,
+                "gamma_z": 0.0,
+                "gamma_yz": 0.0,
+                "gamma_xz": 0.0,
+                "gamma_xy": 0.0,
+                "reference_frequency": 1.0
+            },
+            {
+                "id": 1,
+                "gamma_x": 0.0,
+                "gamma_y": 0.0,
+                "gamma_z": 0.0,
+                "gamma_yz": 0.0,
+                "gamma_xz": 0.0,
+                "gamma_xy": 0.0,
+                "reference_frequency": 1.0
+            }
+        ],
+        "Stiffness_Coefficients": [
+            {
+                "id": 0,
+                "c11": 0.0,
+                "c12": 0.0,
+                "c13": 0.0,
+                "c14": 0.0,
+                "c15": 0.0,
+                "c16": 0.0,
+                "c22": 0.0,
+                "c23": 0.0,
+                "c24": 0.0,
+                "c25": 0.0,
+                "c26": 0.0,
+                "c33": 0.0,
+                "c34": 0.0,
+                "c35": 0.0,
+                "c36": 0.0,
+                "c44": 0.0,
+                "c45": 0.0,
+                "c46": 0.0,
+                "c55": 0.0,
+                "c56": 0.0,
+                "c66": 0.0,
+                "rho": 0.0
+            },
+            {
+                "id": 1,
+                "c11": 0.0,
+                "c12": 0.0,
+                "c13": 0.0,
+                "c14": 0.0,
+                "c15": 0.0,
+                "c16": 0.0,
+                "c22": 0.0,
+                "c23": 0.0,
+                "c24": 0.0,
+                "c25": 0.0,
+                "c26": 0.0,
+                "c33": 0.0,
+                "c34": 0.0,
+                "c35": 0.0,
+                "c36": 0.0,
+                "c44": 0.0,
+                "c45": 0.0,
+                "c46": 0.0,
+                "c55": 0.0,
+                "c56": 0.0,
+                "c66": 0.0,
+                "rho": 0.0
+            }
+        ]
+    },
+    "Electromagnetic": {
+        "Source": {
+            "dt": 1e-12,
+            "time_steps": 2048,
+            "x": 100.0,
+            "y": 10.0,
+            "z": 200.0,
+            "xind": 0,
+            "yind": 0,
+            "zind": 0,
+            "source_frequency": 1.0e7,
+            "x-z_rotation": 0,
+            "x-y_rotation": 0,
+            "amplitude": 1.0,
+            "source_type": "gaus1"
+        },
+        "Permittivity_Coefficients": [
+            {
+                "id": 0,
+                "e11": 0.0,
+                "e12": 0.0,
+                "e13": 0.0,
+                "e22": 0.0,
+                "e23": 0.0,
+                "e33": 0.0
+            },
+            {
+                "id": 1,
+                "e11": 0.0,
+                "e12": 0.0,
+                "e13": 0.0,
+                "e22": 0.0,
+                "e23": 0.0,
+                "e33": 0.0
+            }
+        ],
+        "Conductivity_Coefficients": [
+            {
+                "id": 0,
+                "s11": 0.0,
+                "s12": 0.0,
+                "s13": 0.0,
+                "s22": 0.0,
+                "s23": 0.0,
+                "s33": 0.0
+            },
+            {
+                "id": 1,
+                "s11": 0.0,
+                "s12": 0.0,
+                "s13": 0.0,
+                "s22": 0.0,
+                "s23": 0.0,
+                "s33": 0.0
+            }
+        ]
+    }
+}

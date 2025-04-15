@@ -5,7 +5,7 @@ from glob2 import glob
 import matplotlib.pyplot as plt
 from matplotlib.colors import TwoSlopeNorm
 from seidart.routines.definitions import * 
-from seidart.routines import prjrun
+from seidart.routines.classes import Domain, Material, Model
 
 '''
 This is a custom figure maker script. Much of it has been copied from functions
@@ -23,8 +23,10 @@ zop2.srcrcx_distance()
 
 # This step isn't necessary because the domain, model, and material objects are
 # wrapped in the zop objects. 
-prjfile = 'zop.prj'
-domain, material, seismic, electromag = prjrun.domain_initialization(prjfile)
+prjfile = 'zop.json'
+domain, material, seismic, electromag = loadproject(
+    prjfile, Domain(), Material(), Model(), Model()
+)
 
 png_dpi = 400
 

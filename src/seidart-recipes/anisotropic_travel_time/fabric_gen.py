@@ -10,29 +10,35 @@ from seidart.routines.fabricsynth import Fabric
 
 # Create fabrics 
 sp1 = {
-    'distribution': 'normal', 'npts': [200],
+    'distribution': 'normal', 
+    'npts': [200],
     'trend': [0], 'trend_std': [180], 'skew_trend': [0],
-    'plunge': [0], 'plunge_std': [90], 'skew_plunge': [0]
+    'plunge': [0], 'plunge_std': [90], 'skew_plunge': [0],
+    'orientation': [0], 'orientation_std': [180], 'skew_orientation': [0]
 }
 sp2 = {
     'distribution': 'normal', 'npts': [200],
     'trend': [0],'trend_std': [180],'skew_trend': [0],
-    'plunge': [0],'plunge_std': [65],'skew_plunge': [0]
+    'plunge': [0],'plunge_std': [65],'skew_plunge': [0],
+    'orientation': [0], 'orientation_std': [180], 'skew_orientation': [0]
 }
 sp3 = {
     'distribution': 'normal','npts': [200],
     'trend': [0],'trend_std': [180],'skew_trend': [0],
-    'plunge': [0],'plunge_std': [40],'skew_plunge': [0]
+    'plunge': [0],'plunge_std': [40],'skew_plunge': [0],
+    'orientation': [0], 'orientation_std': [180], 'skew_orientation': [0]
 }
 sp4 = {
     'distribution': 'normal','npts': [200],
     'trend': [0],'trend_std': [180],'skew_trend': [0],
-    'plunge': [0],'plunge_std': [15],'skew_plunge': [0]
+    'plunge': [0],'plunge_std': [15],'skew_plunge': [0],
+    'orientation': [0], 'orientation_std': [180], 'skew_orientation': [0]
 }
 sp5 = {
     'distribution': 'normal', 'npts': [200],
     'trend': [0],'trend_std': [180],'skew_trend': [0],
-    'plunge': [0],'plunge_std': [5],'skew_plunge': [0]
+    'plunge': [0],'plunge_std': [5],'skew_plunge': [0],
+    'orientation': [0], 'orientation_std': [180], 'skew_orientation': [0]
 }
 sp1 = Fabric(sp1, output_filename = 'single_pole1.txt', plot = False)
 sp2 = Fabric(sp2, output_filename = 'single_pole2.txt', plot = False)

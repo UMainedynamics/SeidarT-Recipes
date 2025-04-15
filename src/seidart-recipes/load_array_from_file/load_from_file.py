@@ -3,7 +3,7 @@ from seidart.routines.arraybuild import Array
 
 # When loading from csvfile you will need to supply the channel, project file, 
 # and receiver file
-prjfile = 'single_source.prj'
+prjfile = 'single_source.json'
 rcxfile = 'receivers.xyz' 
 channel = 'Ex'
 csvfile = 'single_source-Ex-50.0-10.0-10.0.csv'

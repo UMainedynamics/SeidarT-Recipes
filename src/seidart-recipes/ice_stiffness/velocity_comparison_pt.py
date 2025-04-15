@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns 
 import matplotlib.pyplot as plt
-from seidart.routines.materials import ice_stiffness, ice_density, tensor2velocities
+from seidart.routines.materials import ice_stiffness_petrenko, ice_density, tensor2velocities
 
 temperature = np.arange(-50, 0, 0.25) # Temperatures that are 
 pressure = np.array([0.01, 0.1, 0.4])
@@ -17,7 +17,7 @@ vsh = np.zeros([m,n])
 
 for ii in range(m):
     for jj in range(n):
-        C = ice_stiffness(temperature[jj], pressure[ii])
+        C = ice_stiffness_petrenko(temperature[jj], pressure[ii])
         rho = ice_density(temperature[jj])
         vpv[ii,jj], vph[ii,jj], vsv[ii,jj], vsh[ii,jj] = tensor2velocities(
             C, rho, seismic = True
