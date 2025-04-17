@@ -32,7 +32,7 @@ alpha_value = 0.3
 
 build_animation(
     prjfile, channel, frame_delay, frame_interval, alpha_value,
-    is_complex = is_complex, is_single_precision = True
+    is_single_precision = True
 )
 
 from zop1 import *
