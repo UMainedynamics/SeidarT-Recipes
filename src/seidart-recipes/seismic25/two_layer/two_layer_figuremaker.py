@@ -5,16 +5,20 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import TwoSlopeNorm
 
 from seidart.routines.definitions import *
-from seidart.routines import prjbuild, prjrun, sourcefunction
+from seidart.routines.classes import Domain, Material, Model
 from seidart.routines.arraybuild import Array
 import seidart.routines.materials as mf 
 
-prjfile = 'two_layer.prj' 
-dom, mat, seis, em = prjrun.domain_initialization(prjfile)
-timevec, fx, fy, fz, srcfn = sourcefunction(seis, 1e8, 'gaus1')
+project_file = 'two_layer.json' 
+dom, mat, seis, em = loadproject(
+    project_file, Domain(), Material(), Model(), Model()
+)
+seis.sourcefunction(seis)
 
-pklfiles = glob('*.pkl')
-f = open('two_layer.vz.pkl', 'rb')
+# pklfiles = glob('*.pkl')
+# f = open('two_layer.vz.pkl', 'rb')
+
+
 array_vz = pickle.load(f)
 array_vz.dt = array_vz.dt*0.7 
 array_vz.seismic.dt = array_vz.seismic.dt * 0.7
