@@ -8,10 +8,13 @@ from seidart.visualization.im2anim import build_animation
 
 ## Initiate the model and domain objects
 project_file = 'two_layer.json' 
+receiver_file = 'receivers.xyz'
 dom, mat, seis, em = loadproject(
     project_file, Domain(), Material(), Model(), Model()
 )
 # seis.sourcefunction(seis)
+seis.CFL = seis.CFL/2
+seis.density_method = 'geometric' #'harmonic'
 seis.build(mat, dom, recompute_tensors = False) 
 seis.kband_check(dom)
 seis.run()
@@ -36,3 +39,9 @@ if dom.dim == 2:
     )
 
 
+array_vx = Array('Vx', project_file, receiver_file)
+array_vx.exaggeration = 0.025 
+array_vx.save()
+array_vz = Array('Vz', project_file, receiver_file) 
+array_vz.exaggeration = 0.025
+array_vz.save() 

@@ -12,9 +12,9 @@ domain, material, seis, em = loadproject(
     project_file, Domain(), Material(), Model(), Model()
 )
 # seis.sourcefunction(seis)
-seis.CFL = seis.CFL/3
+seis.CFL = seis.CFL/3 # Adjust this value when there are going to be large density contrasts if you don't account for it in the density averaging. 
 # seis.density_method = 'arithmetic'
-seis.density_method = 'harmonic'
+seis.density_method = 'harmonic' # If density must be averaged, this is the best method that allows for energy conservation. Next would be geometric then arithmetic.  
 seis.build(material, domain) 
 seis.kband_check(domain)
 seis.run()

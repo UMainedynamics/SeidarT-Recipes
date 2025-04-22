@@ -54,18 +54,18 @@
     ],
     "Seismic": {
         "Source": {
-            "dt": 1.4042542930674748e-05,
-            "time_steps": 5000,
-            "x": 35.0,
-            "y": 35.0,
-            "z": 12.75,
-            "xind": 140,
-            "yind": 0,
-            "zind": 51,
+            "dt": 9.361695287116498e-06,
+            "time_steps": 22000,
+            "x": 7.5,
+            "y": 5.0,
+            "z": 3.0,
+            "xind": 30,
+            "yind": 20,
+            "zind": 12,
             "source_frequency": 40.0,
             "x-z_rotation": 90,
             "x-y_rotation": 0,
-            "amplitude": 10000000.0,
+            "amplitude": 100000000.0,
             "source_type": "gaus1"
         },
         "Attenuation": [
