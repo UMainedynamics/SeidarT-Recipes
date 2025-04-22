@@ -6,19 +6,22 @@ from seidart.visualization.im2anim import build_animation
 
 # ------------------------------------------------------------------------------
 
-## Initiate the model and domain objects
-project_file = 'two_layer.json' 
-dom, mat, seis, em = loadproject(
+## Initiate the model and domainain objects
+project_file = 'air_ice.json' 
+domain, material, seis, em = loadproject(
     project_file, Domain(), Material(), Model(), Model()
 )
 # seis.sourcefunction(seis)
-seis.build(mat, dom, recompute_tensors = False) 
-seis.kband_check(dom)
+seis.CFL = seis.CFL/3
+# seis.density_method = 'arithmetic'
+seis.density_method = 'harmonic'
+seis.build(material, domain) 
+seis.kband_check(domain)
 seis.run()
 
 
 # Create the GIF animation so we can
-if dom.dim == 2: 
+if domain.dim == 2: 
     frame_delay = 5 
     frame_interval = 30 
     alpha_value = 0.3
