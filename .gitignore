@@ -22,3 +22,5 @@ recipes/dipping_bed
 recipes/__init__.py
 recipes/masw
 
+src/seidart-recipes/seismic_validation/surface_waves/surfacewave_validation-Vx-20.0-12.0-34.5.csv
+src/seidart-recipes/seismic_validation/surface_waves/surfacewave_validation-Vz-20.0-12.0-34.5.csv

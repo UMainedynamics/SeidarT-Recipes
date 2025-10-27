@@ -1,0 +1,128 @@
+{
+    "Domain": {
+        "dim": 2,
+        "nx": 80,
+        "ny": 80,
+        "nz": 580,
+        "dx": 0.5,
+        "dy": 0.5,
+        "dz": 0.5,
+        "cpml": 30,
+        "nmats": 1,
+        "sig_opt_scalar": 5,
+        "alpha_max_scalar": 1.0,
+        "NP": 3,
+        "NPA": 3,
+        "kappa_max": 2,
+        "Rcoef": 1e-06,
+        "image_file": "single_media.png"
+    },
+    "Materials": [
+        {
+            "id": 0,
+            "name": "snow",
+            "rgb": "212/170/0",
+            "temperature": -10,
+            "density": 500,
+            "porosity": 1,
+            "water_content": 0,
+            "is_anisotropic": false,
+            "euler_angles": null
+        }
+    ],
+    "Seismic": {
+        "Source": {
+            "dt": 8.234916046533798e-05,
+            "time_steps": 7000,
+            "x": 20.0,
+            "y": 2.0,
+            "z": 10.0,
+            "xind": 40,
+            "yind": 4,
+            "zind": 20,
+            "source_frequency": 100,
+            "x-z_rotation": 90,
+            "x-y_rotation": 0,
+            "amplitude": 10000000.0,
+            "source_type": "gaus1"
+        },
+        "Attenuation": [
+            {
+                "id": 0,
+                "gamma_x": 1e-05,
+                "gamma_y": 1e-05,
+                "gamma_z": 1e-05,
+                "gamma_yz": 1e-05,
+                "gamma_xz": 1e-05,
+                "gamma_xy": 1e-05,
+                "reference_frequency": 1.0
+            }
+        ],
+        "Stiffness_Coefficients": [
+            {
+                "id": 0,
+                "c11": 7871296823.0,
+                "c12": 1670983692.0,
+                "c13": 1170958440.0,
+                "c14": 0.0,
+                "c15": 0.0,
+                "c16": 0.0,
+                "c22": 7871296823.0,
+                "c23": 1170958440.0,
+                "c24": 0.0,
+                "c25": 0.0,
+                "c26": 0.0,
+                "c33": 8371322076.0,
+                "c34": 0.0,
+                "c35": 0.0,
+                "c36": 0.0,
+                "c44": 1683000000.0,
+                "c45": 0.0,
+                "c46": 0.0,
+                "c55": 1683000000.0,
+                "c56": 0.0,
+                "c66": 1534500000.0,
+                "rho": 908.3064240793968
+            }
+        ]
+    },
+    "Electromagnetic": {
+        "Source": {
+            "dt": 9.434617346998735e-11,
+            "time_steps": 3600,
+            "x": 2.0,
+            "y": 2.0,
+            "z": 0.75,
+            "xind": 40,
+            "yind": 40,
+            "zind": 15,
+            "source_frequency": 100000000.0,
+            "x-z_rotation": 0,
+            "x-y_rotation": 0,
+            "amplitude": 100000.0,
+            "source_type": "gaus1"
+        },
+        "Permittivity_Coefficients": [
+            {
+                "id": 0,
+                "e11": 3.0,
+                "e12": -1.0,
+                "e13": 0.0,
+                "e22": 3.0,
+                "e23": 0.0,
+                "e33": 4.0
+            }
+        ],
+        "Conductivity_Coefficients": [
+            {
+                "id": 0,
+                "s11": 7.5e-06,
+                "s12": -2.5e-06,
+                "s13": 0.0,
+                "s22": 7.5e-06,
+                "s23": 0.0,
+                "s33": 1e-05
+            }
+        ]
+    }
+}
