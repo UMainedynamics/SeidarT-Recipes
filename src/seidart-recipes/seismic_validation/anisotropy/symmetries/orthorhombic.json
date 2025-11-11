@@ -1,20 +1,20 @@
 {
     "Domain": {
         "dim": 2.5,
-        "nx": 100,
-        "ny": 100,
-        "nz": 600,
-        "dx": 1.0,
-        "dy": 1.0,
-        "dz": 1.0,
-        "cpml": 45,
+        "nx": 101,
+        "ny": 101,
+        "nz": 101,
+        "dx": 0.5,
+        "dy": 0.5,
+        "dz": 0.5,
+        "cpml": 20,
         "nmats": 1,
         "alpha_max_scalar": 0.05,
         "kappa_max": 2.0,
         "NP": 4,
         "NPA": 4,
         "Rcoef": 1e-08,
-        "image_file": "homo.png"
+        "image_file": "simple.png"
     },
     "Materials": [
         {
@@ -31,19 +31,21 @@
     ],
     "Seismic": {
         "Source": {
-            "dt": 2.8201313130516098e-05,
-            "time_steps": 9000,
-            "x": 50,
-            "y": 50,
-            "z": 48.0,
-            "xind": 50,
-            "yind": 50,
-            "zind": 48,
-            "source_frequency": 60.0,
+            "dt": 4.003819864803847e-05,
+            "time_steps": 4000,
+            "x": 20.5,
+            "y": 20.5,
+            "z": 20.5,
+            "xind": 36,
+            "yind": 36,
+            "zind": 36,
+            "source_frequency": 100.0,
             "x-z_rotation": 0,
-            "x-y_rotation": 45,
+            "x-y_rotation": 0,
+            "y-z_rotation": 30,
             "amplitude": 10000.0,
-            "source_type": "gaus1"
+            "source_type": "dc",
+            "source_wavelet": "gaus1"
         },
         "Attenuation": [
             {
@@ -60,28 +62,28 @@
         "Stiffness_Coefficients": [
             {
                 "id": 0,
-                "c11": 13241480000,
-                "c12": 2648296000,
-                "c13": 1986222000,
-                "c14": 0,
-                "c15": 0,
-                "c16": 0,
-                "c22": 15889776000,
-                "c23": 2317259000,
-                "c24": 0,
-                "c25": 0,
-                "c26": 0,
-                "c33": 11917332000,
-                "c34": 0,
-                "c35": 0,
-                "c36": 0,
-                "c44": 2979333000,
-                "c45": 0,
-                "c46": 0,
-                "c55": 3310370000,
-                "c56": 0,
-                "c66": 3641407000,
-                "rho": 917
+                "c11": 13241480000.0,
+                "c12": 2648296000.0,
+                "c13": 1986222000.0,
+                "c14": 0.0,
+                "c15": 0.0,
+                "c16": 0.0,
+                "c22": 15889776000.0,
+                "c23": 2317259000.0,
+                "c24": 0.0,
+                "c25": 0.0,
+                "c26": 0.0,
+                "c33": 11917332000.0,
+                "c34": 0.0,
+                "c35": 0.0,
+                "c36": 0.0,
+                "c44": 2979333000.0,
+                "c45": 0.0,
+                "c46": 0.0,
+                "c55": 3310370000.0,
+                "c56": 0.0,
+                "c66": 3641407000.0,
+                "rho": 917.0
             }
         ]
     },
@@ -98,8 +100,9 @@
             "source_frequency": 1.0,
             "x-z_rotation": 0,
             "x-y_rotation": 0,
+            "y-z_rotation": 0,
             "amplitude": 1.0,
-            "source_type": "gaus1"
+            "source_wavelet": "gaus1"
         },
         "Permittivity_Coefficients": [
             {
