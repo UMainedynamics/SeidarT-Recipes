@@ -120,8 +120,6 @@ for i, x, t_c in scrossovers:
  
 # ------------------------------------------------------------------------------
 
-
-
 ## Initiate the model and domain objects
 project_file = 'six_layer.json' 
 receiver_file = 'receivers4.xyz'
@@ -179,14 +177,9 @@ array_vz.fk_analysis(
     mode_lines = mode_lines
 )
 
-
-
 array_vx.agc_gain_window = 701
 array_vx.exaggeration = 0.09
 array_vx.sectionplot(colormap = 'seismic', amplitude_correction_type = 'AGC')
-
-
-
 
 array_vz.srcrcx_distance()
 m, n = array_vz.timeseries.shape 

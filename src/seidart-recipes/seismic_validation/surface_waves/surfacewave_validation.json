@@ -97,8 +97,10 @@
             "source_frequency": 10.0,
             "x-z_rotation": 90,
             "x-y_rotation": 0,
+            "y-z_rotation": 0,
             "amplitude": 10000000.0,
-            "source_type": "gaus1"
+            "source_wavelet": "gaus1",
+            "source_type": "ac"
         },
         "Attenuation": [
             {
@@ -328,6 +330,7 @@
             "source_frequency": 1.0,
             "x-z_rotation": 0,
             "x-y_rotation": 0,
+            "y-z_rotation": 0,
             "amplitude": 1.0,
             "source_type": "gaus1"
         },

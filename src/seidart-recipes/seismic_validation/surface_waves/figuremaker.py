@@ -125,7 +125,7 @@ velocity2 = higher2.velocity
 velocity3 = higher3.velocity
 
 # ------------------------------------------------------------------------------
-fig = plt.figure(figsize=(8, 6))
+fig = plt.figure(figsize=(7, 6))
 gs = gridspec.GridSpec(nrows=1, ncols=3, width_ratios=[ 1,0.2, 1], wspace=0.05)
 gs_masw = gridspec.GridSpecFromSubplotSpec(5, 1, subplot_spec=gs[2], height_ratios=[1,1, 0.1, 0.1, 0.1], wspace=0.03)
 
