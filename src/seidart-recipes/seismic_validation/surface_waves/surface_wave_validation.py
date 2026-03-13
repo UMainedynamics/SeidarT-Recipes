@@ -13,11 +13,12 @@ dom, mat, seis, em = loadproject(
     project_file, Domain(), Material(), Model(), Model()
 )
 
+seis.CFL = 1.0/(4.0*np.sqrt(3)) #0.3
 seis.use_multimodal = True
 seis.source_n_octaves = 3
-# seis.density_method = 'arithmetic'
+seis.density_method = 'arithmetic'
 # seis.density_method = 'harmonic'
-seis.density_method = 'geometric' 
+# seis.density_method = 'geometric' 
 seis.build(mat, dom, recompute_tensors = False) 
 seis.kband_check(dom)
 seis.run()
