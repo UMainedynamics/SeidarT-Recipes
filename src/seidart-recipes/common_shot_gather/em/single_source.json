@@ -9,11 +9,10 @@
         "dz": 0.25,
         "cpml": 14,
         "nmats": 3,
-        "sig_opt_scalar": 1.7,
         "alpha_max_scalar": 1.0,
+        "kappa_max": 15,
         "NP": 4,
         "NPA": 4,
-        "kappa_max": 15,
         "Rcoef": 0.001,
         "image_file": "three_layer.png"
     },
@@ -65,8 +64,10 @@
             "source_frequency": 80,
             "x-z_rotation": 90,
             "x-y_rotation": 0,
+            "y-z_rotation": 0,
             "amplitude": 100000.0,
-            "source_type": "gaus1"
+            "source_type": "ac",
+            "source_wavelet": "gaus1"
         },
         "Attenuation": [
             {
@@ -191,8 +192,9 @@
             "source_frequency": 100000000.0,
             "x-z_rotation": 0,
             "x-y_rotation": 0,
+            "y-z_rotation": 0,
             "amplitude": 1000000.0,
-            "source_type": "gaus1"
+            "source_wavelet": "gaus1"
         },
         "Permittivity_Coefficients": [
             {
